@@ -392,6 +392,27 @@ a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 .res.di{background:#e3ece6;color:var(--forest);font-weight:500}
 .res.ip{background:#eceee8;color:var(--muted)}
 
+/* ---------- Activities ---------- */
+.acts-sec{background:var(--ink);color:#eef2ef;padding:100px 0}
+.acts-sec .kicker{color:#7fd6a3}
+.acts-sec .sec-head{margin-top:22px}
+.acts-sec .sec-head h2{color:#f3f2ed}
+.acts-sec .sec-head h2 .g{color:#4fd18a}
+.acts-sec .sec-head p{color:#a9b6ae}
+.acts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.act{position:relative;background:#141a17;border:1px solid #26302b;border-radius:6px;padding:28px 26px 30px;transition:border-color .25s ease, transform .25s ease}
+.act::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--bull);border-radius:6px 0 0 6px}
+.act:nth-child(even)::before{background:var(--bear)}
+.act:hover{border-color:#3d4d44;transform:translateY(-3px)}
+.act .num{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:transparent;-webkit-text-stroke:1.5px #4fd18a}
+.act:nth-child(even) .num{-webkit-text-stroke-color:#ff6b6f}
+.act .when{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:#93a39a;margin:20px 0 8px}
+.act h3{font-size:18px;font-weight:700;line-height:1.25;color:#fff}
+.act .org{color:#4fd18a;font-weight:600;font-size:15px;margin:6px 0 14px}
+.act:nth-child(even) .org{color:#ff8a8d}
+.act p{margin:0;color:#b8c4bd;font-size:14.5px;line-height:1.6}
+@media (prefers-reduced-motion: reduce){.act{transition:none}.act:hover{transform:none}}
+
 /* ---------- Hall of Fame ---------- */
 .hof{position:relative;background:var(--paper);padding:100px 0 110px;overflow:hidden;border-top:1px solid var(--rule)}
 #confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
@@ -530,6 +551,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <li><a href="#dossier">Research</a></li>
         <li><a href="#studio">Studio</a></li>
         <li class="opt"><a href="#coursework">Coursework</a></li>
+        <li class="opt"><a href="#activities">Activities</a></li>
         <li><a href="#hall">Hall of Fame</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -817,6 +839,20 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   </div>
 </section>
 
+<!-- ACTIVITIES -->
+<section class="acts-sec" id="activities" aria-labelledby="acts-title">
+  <div class="wrap">
+    <div class="kicker">Extracurricular / Leadership &amp; community</div>
+    <div class="sec-head">
+      <h2 class="disp" id="acts-title">Beyond the <span class="g">classroom.</span></h2>
+      <p>Clubs, volunteering and leadership roles outside the lecture theatre.</p>
+    </div>
+    <div class="acts">
+      <article class="act"><div class="num">01</div><div class="when">2024</div><h3>Leadership roles</h3><div class="org">AIESEC in Vietnam</div><p>Led teams in the student-run international organisation.</p></article>
+    </div>
+  </div>
+</section>
+
 <!-- HALL OF FAME -->
 <section class="hof" id="hall" aria-labelledby="hof-title">
   <canvas id="confetti" aria-hidden="true"></canvas>
@@ -922,7 +958,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <div>thuyhien.onwork@gmail.com</div>
         <div>+61 423 506 096</div>
       </div>
-      <div><h4>Research</h4><ul><li><a href="#dossier">Research dossier</a></li><li><a href="#coursework">Coursework</a></li><li><a href="#hall">Hall of Fame</a></li></ul></div>
+      <div><h4>Research</h4><ul><li><a href="#dossier">Research dossier</a></li><li><a href="#coursework">Coursework</a></li><li><a href="#activities">Activities</a></li><li><a href="#hall">Hall of Fame</a></li></ul></div>
       <div><h4>Studio</h4><ul><li><a href="#studio">Market moves</a></li><li><a href="#studio">Economics 101</a></li><li><a href="#studio">Investing essentials</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul><li><a href="https://www.linkedin.com/in/thuyhienonwork/">LinkedIn</a></li><li><a href="https://github.com/thuyhienonwork-bit">GitHub</a></li><li><a href="#">YouTube</a></li><li><a href="#">TikTok</a></li><li><a href="https://thuyhienonwork.wixsite.com/denieh">Earlier portfolio</a></li></ul></div>
     </div>
@@ -1320,7 +1356,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 
       /* Every other block slides up and fades in as it reaches the viewport, a few at a time */
       var sel = ['.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
-        '.studio-top > *','.series-label','.series','.episode > *','.post','.course .sec-head','.cg','.hof .kicker.top','.hof-top > *',
+        '.studio-top > *','.series-label','.series','.episode > *','.post','.course .sec-head','.cg','.acts-sec .kicker','.acts-sec .sec-head','.act','.hof .kicker.top','.hof-top > *',
         '.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
       var items = gsap.utils.toArray(sel).filter(function(el, i, arr){
         return !el.closest('.hero') && !arr.some(function(o){ return o !== el && o.contains(el); });
