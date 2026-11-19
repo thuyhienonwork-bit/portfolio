@@ -94,8 +94,13 @@ header.top .wrap{max-width:1440px;padding:0 clamp(16px,3vw,40px)}
 /* Toolbar in the style of a trading terminal: round logo left, two pills right */
 header.top{background:#0f0f0f;border-bottom:1px solid #262626}
 header.top .wrap{height:60px}
-.brand-logo{display:block;width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #2a2a2a;transition:box-shadow .2s ease}
-.brand:hover .brand-logo,.brand:focus-visible .brand-logo{box-shadow:0 0 0 2px var(--bull)}
+/* Logo with a green 'live' ring: dark gap, solid ring, and a soft pulse */
+header.top .brand{position:relative;border-radius:50%}
+.brand-logo{display:block;width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #0f0f0f,0 0 0 4px #22c55e;transition:box-shadow .2s ease}
+header.top .brand::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #22c55e;pointer-events:none;animation:live-ring 1.8s ease-out infinite}
+@keyframes live-ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.45);opacity:0}}
+.brand:hover .brand-logo,.brand:focus-visible .brand-logo{box-shadow:0 0 0 2px #0f0f0f,0 0 0 4px #4ade80}
+@media (prefers-reduced-motion: reduce){header.top .brand::after{animation:none;opacity:0}}
 .topnav{display:flex;align-items:center;gap:10px}
 .pill{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 18px;border-radius:999px;font-family:var(--body);font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background .15s ease,border-color .15s ease,color .15s ease}
 .pill.dark{background:#000;color:#f2f2f2;border:1px solid #3d3d3d}
