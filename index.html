@@ -448,6 +448,13 @@ a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 .act .org{color:#4fd18a;font-weight:600;font-size:15px;margin:6px 0 14px}
 .act:nth-child(even) .org{color:#ff8a8d}
 .act p{margin:0;color:#b8c4bd;font-size:14.5px;line-height:1.6}
+.acts{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.act .sub{color:#93a39a;font-size:13px;line-height:1.45;margin:-8px 0 16px}
+.act ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.act li{position:relative;padding-left:16px;color:#b8c4bd;font-size:14.5px;line-height:1.6}
+.act li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:#4fd18a}
+.act:nth-child(even) li::before{background:#ff8a8d}
+.act li b{color:#fff;font-weight:600}
 @media (prefers-reduced-motion: reduce){.act{transition:none}.act:hover{transform:none}}
 
 /* ---------- Hall of Fame ---------- */
@@ -885,10 +892,25 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     <div class="kicker">Extracurricular / Leadership &amp; community</div>
     <div class="sec-head">
       <h2 class="disp" id="acts-title">Beyond the <span class="g">classroom.</span></h2>
-      <p>Clubs, volunteering and leadership roles outside the lecture theatre.</p>
+      <p>Leadership, client work and event logistics outside the lecture theatre.</p>
     </div>
     <div class="acts">
-      <article class="act"><div class="num">01</div><div class="when">2024</div><h3>Leadership roles</h3><div class="org">AIESEC in Vietnam</div><p>Led teams in the student-run international organisation.</p></article>
+      <article class="act"><div class="num">01</div><div class="when">Jul 2024 – Jan 2025</div><h3>Customer Experience Executive, International Relations</h3><div class="org">AIESEC in Vietnam</div><div class="sub">Ho Chi Minh South Branch · Outgoing Global Volunteer · Jun 2024 – Jan 2025</div>
+        <ul>
+          <li>Audited tracking across <b>20+ partner accounts</b>, found the root causes of a supply–demand mismatch and rebuilt the Excel tracking system, cutting misalignment incidents by <b>50%</b>.</li>
+          <li>Negotiated AIESEC’s first commission structure with <b>Bao Viet Insurance</b> (28% per customer signed).</li>
+          <li>Produced <b>5+ monthly and 5+ quarterly</b> visualisation reports to guide marketing tactics; rebuilt risk management, raising customer satisfaction by <b>20%</b>.</li>
+        </ul></article>
+      <article class="act"><div class="num">02</div><div class="when">Mar 2024 – Apr 2024</div><h3>Organizing Committee Vice President, Logistics and Delegations</h3><div class="org">AIESEC in Vietnam</div><div class="sub">Ho Chi Minh South Branch</div>
+        <ul>
+          <li>Attracted <b>60+ delegates</b> through budget, email marketing and customer-journey planning.</li>
+          <li>Managed <b>40+ speakers</b> and delegations on site, achieving a <b>95%</b> conversion rate to official customers.</li>
+        </ul></article>
+      <article class="act"><div class="num">03</div><div class="when">Jun 2023 – Jun 2024</div><h3>Project Management Leader</h3><div class="org">Central Committee of the Ho Chi Minh Communist Youth Union</div><div class="sub">Selected from 1,000 applicants (40 places)</div>
+        <ul>
+          <li>Managed logistics for <b>3,000+ delegates</b> across 15+ city, national and international events, including AYFN and SSEAYP.</li>
+          <li>Grew a 140K-follower Facebook page by <b>1,000+ followers</b> in one month.</li>
+        </ul></article>
     </div>
   </div>
 </section>
