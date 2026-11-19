@@ -381,15 +381,21 @@ a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 .hof-top h2{font-size:clamp(52px,7.5vw,112px);color:var(--forest)}
 .hof-top h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
 .hof-top .intro{font-size:17px;color:var(--muted);margin:0 0 26px;max-width:42ch}
-.hof-stats{display:flex;flex-wrap:wrap;gap:20px 28px;margin-bottom:26px}
+.hof-stats{display:flex;flex-wrap:nowrap;align-items:flex-end;gap:28px;margin-bottom:26px}
 .hof-stats b{display:block;white-space:nowrap;font-family:var(--display);font-weight:850;font-size:32px;letter-spacing:-.02em;line-height:1;color:var(--forest)}
 .hof-stats span{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .hof-stats div{border-left:3px solid var(--bull);padding-left:14px}
 .hof-stats div:nth-child(2){border-left-color:var(--bear)}
+/* Keep the three stats on one row: sizes scale with the column width */
+.hof-top > div{container-type:inline-size}
+.hof-stats{gap:min(28px,3.5cqw)}
+.hof-stats div{padding-left:min(14px,2.6cqw)}
+.hof-stats b{font-size:min(32px,7.2cqw)}
+.hof-stats span{font-size:min(11px,2.6cqw);letter-spacing:min(.2em,.5cqw)}
 #celebrate{all:unset;cursor:pointer;display:inline-flex;gap:12px;align-items:center;font-weight:600;padding-bottom:8px;border-bottom:1.5px solid currentColor;color:var(--forest)}
 #celebrate:hover{color:var(--bear)}
 #celebrate:focus-visible{outline:2px solid var(--bull);outline-offset:4px}
-@media (max-width:900px){.hof-top{grid-template-columns:1fr;gap:20px}}
+@media (max-width:900px){.hof-top{grid-template-columns:minmax(0,1fr);gap:20px}}
 .spot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:center;margin-top:80px;padding-top:56px;border-top:1px solid var(--rule)}
 @media (max-width:860px){.spot{grid-template-columns:1fr}}
 .spot-img{position:relative;margin:0 0 30px}
