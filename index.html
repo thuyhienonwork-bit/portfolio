@@ -1061,37 +1061,42 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     var cv = document.getElementById('hero-chart'), hero = cv && cv.parentNode;
     if (!cv || !cv.getContext) return;
     var g = cv.getContext('2d'), W = 0, H = 0, dpr = 1;
-    var STEP = 0.55, N = 34;                    // seconds per new point, points on screen
+    var STEP = 0.32, N = 56;                    // seconds per new point, max points on screen
     var GREEN = '#5fd47c', RED = '#ef5a5f', YEL = '#f5d76e';
     var seed = 42; function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
     var pts = [], v = 900;
     function nextVal(){ var drift = (900 + 60 * Math.sin(pts.length / 23)) - v; v += drift * 0.06 + (rnd() - 0.47) * 14; return v; }
     for (var i = 0; i < N + 2; i++) pts.push(nextVal());
     var t = 0, lo = Math.min.apply(null, pts), hi = Math.max.apply(null, pts);
-    var hearts = [], nextBurst = 3 + rnd() * 2, clock = 0, running = true, last = 0;
+    var headX = 0, headY = 0, hearts = [], nextBurst = 2.5, clock = 0, running = true, last = 0, wrap = hero.querySelector('.wrap');
 
     function size(){
       dpr = Math.min(window.devicePixelRatio || 1, 2); W = hero.clientWidth; H = hero.clientHeight;
       cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-    function box(){                             // chart area, kept clear of the name on the left
-      var m = W < 700;
-      return m ? { x0: W * 0.06, x1: W * 0.58, y0: 84, y1: 84 + W * 0.30, alpha: .85, m: true }
-               : { x0: W * 0.30, x1: W * 0.80, y0: H * 0.14, y1: H * 0.56, alpha: .9 };
+    function box(){                             // full width between the page margins; the price pill ends at the right margin
+      var m = W < 700, cs = getComputedStyle(wrap), r = wrap.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+      var L = r.left - hr.left + parseFloat(cs.paddingLeft), R = r.right - hr.left - parseFloat(cs.paddingRight);
+      var fs = pillFont(); g.font = '600 ' + fs + 'px Geist, system-ui, sans-serif';
+      var pw = g.measureText('$000.00').width + fs * 1.4, gap = m ? 14 : 28;
+      return m ? { x0: L, x1: R - pw - gap, y0: 84, y1: 84 + W * 0.30, alpha: .85, m: true, gap: gap, n: 30 }
+               : { x0: L, x1: R - pw - gap, y0: H * 0.14, y1: H * 0.56, alpha: .9, gap: gap, n: N };
     }
-    function heart(x, y, s){
-      g.beginPath(); g.moveTo(x, y + s * .3);
-      g.bezierCurveTo(x, y, x - s * .5, y, x - s * .5, y + s * .3);
-      g.bezierCurveTo(x - s * .5, y + s * .6, x, y + s * .75, x, y + s);
-      g.bezierCurveTo(x, y + s * .75, x + s * .5, y + s * .6, x + s * .5, y + s * .3);
-      g.bezierCurveTo(x + s * .5, y, x, y, x, y + s * .3); g.fill();
+    function pillFont(){ return W < 700 ? 13 : Math.max(14, Math.min(20, W / 70)); }
+    function heart(cx, top, s){                  // rounded heart: two round lobes and a soft bottom; s = width
+      var r = s * .27, dx = s * .23, cy = top + r, bot = top + s * .86;
+      g.beginPath(); g.moveTo(cx, bot);
+      g.bezierCurveTo(cx - s * .16, bot - s * .1, cx - dx - r, cy + r * 1.05, cx - dx - r, cy);
+      g.arc(cx - dx, cy, r, Math.PI, 0);
+      g.arc(cx + dx, cy, r, Math.PI, 0);
+      g.bezierCurveTo(cx + dx + r, cy + r * 1.05, cx + s * .16, bot - s * .1, cx, bot);
+      g.fill();
     }
-    function burst(x, y, k0){
-      var n = 3 + Math.floor(rnd() * 3);
-      for (var k = 0; k < n; k++) hearts.push({ x: x, y: y, vx: (rnd() - .5) * 26, vy: -(45 + rnd() * 55), s: (12 + rnd() * 10) * k0, gs: (14 + rnd() * 20) * k0, a: k % 2 ? .45 : 1, life: 0, max: 1.4 + rnd() * .8, d: k * .12 });
+    function burst(k0){                          // one wave: hearts rise one after another, newest in front
+      for (var k = 0; k < 3; k++) hearts.push({ x: headX, y: headY, vx: (rnd() - .4) * 40, vy: -(95 + rnd() * 30), s: (20 + rnd() * 6) * k0, gs: (30 + rnd() * 18) * k0, life: 0, max: 1.1 + rnd() * .2, d: k * .14 });
     }
     function pill(x, y, text, up){
-      var fs = W < 700 ? 13 : Math.max(14, Math.min(20, W / 70));
+      var fs = pillFont();
       g.font = '600 ' + fs + 'px Geist, system-ui, sans-serif';
       var tw = g.measureText(text).width, ph = fs * 1.9, pw = tw + fs * 1.4, r = ph / 2;
       g.fillStyle = up ? 'rgba(95,212,124,.16)' : 'rgba(239,90,95,.18)';
@@ -1102,10 +1107,10 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       var b = box(), n = pts.length;
       t += dt / STEP;
       while (t >= 1){ t -= 1; pts.push(nextVal()); if (pts.length > N + 2) pts.shift(); }
-      var vis = pts.slice(-N - 1), cur = vis[vis.length - 2] + (vis[vis.length - 1] - vis[vis.length - 2]) * t;
+      var vis = pts.slice(-b.n - 1), cur = vis[vis.length - 2] + (vis[vis.length - 1] - vis[vis.length - 2]) * t;
       var tlo = Math.min.apply(null, vis), thi = Math.max.apply(null, vis), pad = (thi - tlo) * .15 + 4;
       lo += (tlo - pad - lo) * Math.min(1, dt * 2); hi += (thi + pad - hi) * Math.min(1, dt * 2);
-      var step = (b.x1 - b.x0) / (N - 1);
+      var step = (b.x1 - b.x0) / (b.n - 1);
       function X(i){ return b.x0 + (i - t) * step; }
       function Y(val){ return b.y1 - (val - lo) / (hi - lo) * (b.y1 - b.y0); }
       g.clearRect(0, 0, W, H); g.save(); g.globalAlpha = b.alpha;
@@ -1123,20 +1128,22 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       g.fillStyle = gr; g.fill(); g.restore();
       // yellow price level + pill
       var up = vis[vis.length - 1] >= vis[vis.length - 2];
-      var gap = b.m ? 18 : 40;
+      var gap = b.gap; headX = hx; headY = hy;
       g.strokeStyle = YEL; g.lineWidth = 1.5; g.beginPath(); g.moveTo(b.x0, hy); g.lineTo(hx + gap, hy); g.stroke();
       pill(hx + gap, hy, '$' + cur.toFixed(2), up);
       // head dot
       g.fillStyle = '#000'; g.beginPath(); g.arc(hx, hy, 10, 0, Math.PI * 2); g.fill();
       g.fillStyle = YEL; g.beginPath(); g.arc(hx, hy, 5.5, 0, Math.PI * 2); g.fill();
-      // hearts every 3-5 s
-      clock += dt; if (clock >= nextBurst){ clock = 0; nextBurst = 3 + rnd() * 2; burst(hx, hy - 14, b.m ? .65 : 1); }
+      // hearts: every 5-6 s, two quick waves; each heart rises from the dot, grows and fades behind the newer ones
+      clock += dt;
+      if (clock >= nextBurst){ clock = 0; nextBurst = 5 + rnd(); burst(b.m ? .65 : 1); setTimeout(function(){ burst(b.m ? .65 : 1); }, 550); }
       hearts = hearts.filter(function(h){ return h.life < h.max + h.d; });
       hearts.forEach(function(h){
         h.life += dt; var lt = h.life - h.d; if (lt < 0) return;
-        var p = lt / h.max, s = h.s + h.gs * p;
-        g.globalAlpha = b.alpha * h.a * (1 - p * p);
-        g.fillStyle = YEL; heart(h.x + h.vx * lt, h.y + h.vy * lt - s, s);
+        var p = lt / h.max, e = 1 - Math.pow(1 - p, 2), s = h.s + h.gs * e;
+        var a = p < .25 ? 1 : p < .7 ? 1 - (p - .25) / .45 * .55 : .45 * (1 - (p - .7) / .3);
+        g.globalAlpha = b.alpha * a;
+        g.fillStyle = YEL; heart(h.x + h.vx * lt, h.y - 14 + h.vy * lt * (1 - p * .35) - s * .86, s);
       });
       g.restore();
     }
