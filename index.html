@@ -213,25 +213,20 @@ nav a:hover{color:#fff}
 .desk-head h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
 .desk-head p{margin:0;text-align:right;font-size:16px;color:var(--muted);line-height:1.7}
 .more-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.more-row{position:relative;display:grid;grid-template-columns:40% minmax(0,1fr) auto;grid-template-rows:1fr auto;column-gap:10px;min-height:240px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+.more-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto;column-gap:10px;min-height:200px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
 .more-row::before{content:"";position:absolute;z-index:2;left:0;top:0;bottom:0;width:4px;background:var(--bull);transition:width .25s ease}
 .more-row:nth-child(even)::before{background:var(--bear)}
-.more-row .thumb{grid-column:1;grid-row:1 / -1;position:relative;display:block;background:#fff;overflow:hidden;border-right:1px solid var(--rule)}
-.more-row .thumb img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .5s ease}
-.more-row .thumb.ph{display:flex;align-items:center;justify-content:center;background:var(--forest);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.05) 27px 28px)}
-.more-row .thumb.ph span{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.1;color:#d7eedf;text-align:center;padding:0 20px}
-.more-row > span:nth-child(2){grid-column:2 / -1;grid-row:1;padding:18px 18px 0 6px}
+.more-row > span:first-child{grid-column:1 / -1;grid-row:1;padding:22px 24px 0 28px}
 .more-row .code{display:block;margin-bottom:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--bull-deep)}
 .more-row:nth-child(even) .code{color:#b7262c}
-.more-row b{font-size:15px;font-weight:650;line-height:1.3;display:block;color:var(--forest);transition:color .25s ease}
-.more-row small{display:block;color:var(--muted);font-size:12.5px;line-height:1.5;margin-top:6px;transition:color .25s ease}
-.more-row .tag{grid-column:2;grid-row:2;align-self:end;justify-self:start;margin:12px 0 16px 6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--bull-deep);background:var(--bull-soft);padding:5px 10px;border-radius:99px;transition:background .25s ease, color .25s ease}
+.more-row b{font-size:16px;font-weight:650;line-height:1.3;display:block;color:var(--forest);transition:color .25s ease}
+.more-row small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:6px;transition:color .25s ease}
+.more-row .tag{grid-column:1;grid-row:2;align-self:end;justify-self:start;margin:14px 0 20px 28px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--bull-deep);background:var(--bull-soft);padding:5px 10px;border-radius:99px;transition:background .25s ease, color .25s ease}
 .more-row:nth-child(even) .tag{background:var(--bear-soft);color:#b7262c}
-.more-row .ar{grid-column:3;grid-row:2;align-self:end;justify-self:end;margin:0 16px 16px 0;font-size:20px;line-height:1.4;color:var(--forest);transition:transform .25s ease, color .25s ease}
+.more-row .ar{grid-column:2;grid-row:2;align-self:end;justify-self:end;margin:0 24px 20px 0;font-size:20px;line-height:1.4;color:var(--forest);transition:transform .25s ease, color .25s ease}
 .more-row .ar.req{white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
 a.more-row:hover{background:var(--forest);border-color:var(--forest);transform:translateY(-3px);box-shadow:0 22px 40px -22px rgba(12,18,16,.55)}
 a.more-row:hover::before{width:6px}
-a.more-row:hover .thumb img{transform:scale(1.04)}
 a.more-row:hover b,a.more-row:hover .ar{color:#fff}
 a.more-row:hover small{color:#c8d2cc}
 a.more-row:hover .code{color:#4fd18a}
@@ -240,11 +235,15 @@ a.more-row:hover .tag{background:rgba(79,209,138,.16);color:#d7f2e2}
 a.more-row:nth-child(even):hover .tag{background:rgba(224,57,62,.2);color:#ffd0d2}
 a.more-row:hover .ar{transform:translate(3px,-3px)}
 a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
-@media (prefers-reduced-motion: reduce){.more-row,.more-row *{transition:none}a.more-row:hover{transform:none}a.more-row:hover .thumb img{transform:none}}
+@media (prefers-reduced-motion: reduce){.more-row,.more-row *{transition:none}a.more-row:hover{transform:none}}
+.peek{position:fixed;left:0;top:0;z-index:60;width:230px;aspect-ratio:3/4;pointer-events:none;opacity:0;scale:.82;rotate:-4deg;transform:translate3d(-999px,-999px,0);background:#fff;border:5px solid #fff;border-radius:6px;box-shadow:0 28px 60px -18px rgba(12,18,16,.55),0 0 0 1px rgba(12,18,16,.08);overflow:hidden;transition:opacity .25s ease, scale .35s cubic-bezier(.2,.9,.3,1.2), rotate .35s ease}
+.peek img{display:block;width:100%;height:100%;object-fit:cover}
+.peek.on{opacity:1;scale:1;rotate:-2deg}
+@media (prefers-reduced-motion: reduce){.peek{transition:none;rotate:0deg;scale:1}.peek.on{rotate:0deg}}
+@media (hover:none){.peek{display:none}}
 @media (max-width:1180px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.desk-head p{text-align:left}}
 @media (max-width:720px){.more-list{grid-template-columns:1fr}}
-@media (max-width:420px){.more-row{grid-template-columns:34% minmax(0,1fr) auto;min-height:200px}.more-row .thumb.ph span{font-size:18px}}
 
 .view-tog{display:inline-flex;border:1px solid var(--forest)}
 .view-tog button{all:unset;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;color:var(--forest)}
@@ -691,14 +690,14 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       <p>Bonds, portfolios, forecasting and econometrics.<br>Select a card to read the report.</p>
     </div>
       <div class="more-list">
-      <a class="more-row" href="#" data-doc="agb" data-n="22" data-title="Bond Immunisation Strategy and Yield Curve Forecast" data-code="BAFI3271"><span class="thumb"><img src="reports/thumbs/agb.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">BAFI3271</span><b>Bond Immunisation Strategy and Yield Curve Forecast</b><small>Group report, Debt and Money Markets. My part: the cash-flow matching portfolio and trading simulation. A$267m of liabilities funded for A$220.67m; 5–7-year yields forecast about 10bp lower by January 2027.</small></span><span class="tag">Fixed income</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="eq" data-n="45" data-title="Equity Portfolio Management: Passive and Active Strategies" data-code="BAFI1042"><span class="thumb"><img src="reports/thumbs/eq.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">BAFI1042</span><b>Equity Portfolio Management: Passive and Active Strategies</b><small>Individual report. The active portfolio returned 4.64% against a 3.81% benchmark, with an information ratio of 2.93.</small></span><span class="tag">Portfolio management</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="t1" data-n="1" data-title="Equity Trading Simulation Report" data-code="BAFI1042"><span class="thumb"><img src="reports/thumbs/t1.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">BAFI1042</span><b>Equity Trading Simulation Report</b><small>A$50,000 portfolio returned 0.72% (A$358), 2.55% behind the S&P/ASX 200. Key lesson: apply the stop-loss rule consistently.</small></span><span class="tag">Equity trading</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="jpn" data-n="24" data-title="Forecasting Short-Term Visitor Arrivals from Japan to Australia" data-code="ECON1061"><span class="thumb"><img src="reports/thumbs/jpn.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1061</span><b>Forecasting Short-Term Visitor Arrivals from Japan to Australia</b><small>Individual report. ARIMA outperformed ETS and the seasonal naïve benchmark on every test-set measure, with a MAPE of 6.9%.</small></span><span class="tag">Forecasting</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="fdi" data-n="12" data-title="Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis" data-code="ECON1066"><span class="thumb"><img src="reports/thumbs/fdi.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1066</span><b>Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis</b><small>Group research report, 96 countries. The relationship is positive but small (US$1bn ≈ +0.25% GDP per capita) and appears only above US$4bn of inflows.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="acct" data-n="8" data-title="Determinants of Financial Account Ownership: An OLS Analysis" data-code="ECON1066"><span class="thumb"><img src="reports/thumbs/acct.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1066</span><b>Determinants of Financial Account Ownership: An OLS Analysis</b><small>Individual assignment, 139 countries, R² 0.70. Income is the strongest driver: +1% GDP per capita ≈ +0.18 points of ownership.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
-      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Two book chapters</span></span><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health</span><span class="ar req">On request</span></div>
-      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Research proposal</span></span><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Proposal</span><span class="ar req">On request</span></div>
+      <a class="more-row" href="#" data-doc="agb" data-n="22" data-title="Bond Immunisation Strategy and Yield Curve Forecast" data-code="BAFI3271" data-thumb="reports/thumbs/agb.jpg"><span><span class="code">BAFI3271</span><b>Bond Immunisation Strategy and Yield Curve Forecast</b><small>Group report, Debt and Money Markets. My part: the cash-flow matching portfolio and trading simulation. A$267m of liabilities funded for A$220.67m; 5–7-year yields forecast about 10bp lower by January 2027.</small></span><span class="tag">Fixed income</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="eq" data-n="45" data-title="Equity Portfolio Management: Passive and Active Strategies" data-code="BAFI1042" data-thumb="reports/thumbs/eq.jpg"><span><span class="code">BAFI1042</span><b>Equity Portfolio Management: Passive and Active Strategies</b><small>Individual report. The active portfolio returned 4.64% against a 3.81% benchmark, with an information ratio of 2.93.</small></span><span class="tag">Portfolio management</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="t1" data-n="1" data-title="Equity Trading Simulation Report" data-code="BAFI1042" data-thumb="reports/thumbs/t1.jpg"><span><span class="code">BAFI1042</span><b>Equity Trading Simulation Report</b><small>A$50,000 portfolio returned 0.72% (A$358), 2.55% behind the S&P/ASX 200. Key lesson: apply the stop-loss rule consistently.</small></span><span class="tag">Equity trading</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="jpn" data-n="24" data-title="Forecasting Short-Term Visitor Arrivals from Japan to Australia" data-code="ECON1061" data-thumb="reports/thumbs/jpn.jpg"><span><span class="code">ECON1061</span><b>Forecasting Short-Term Visitor Arrivals from Japan to Australia</b><small>Individual report. ARIMA outperformed ETS and the seasonal naïve benchmark on every test-set measure, with a MAPE of 6.9%.</small></span><span class="tag">Forecasting</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="fdi" data-n="12" data-title="Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis" data-code="ECON1066" data-thumb="reports/thumbs/fdi.jpg"><span><span class="code">ECON1066</span><b>Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis</b><small>Group research report, 96 countries. The relationship is positive but small (US$1bn ≈ +0.25% GDP per capita) and appears only above US$4bn of inflows.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="acct" data-n="8" data-title="Determinants of Financial Account Ownership: An OLS Analysis" data-code="ECON1066" data-thumb="reports/thumbs/acct.jpg"><span><span class="code">ECON1066</span><b>Determinants of Financial Account Ownership: An OLS Analysis</b><small>Individual assignment, 139 countries, R² 0.70. Income is the strongest driver: +1% GDP per capita ≈ +0.18 points of ownership.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
+      <div class="more-row static"><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health</span><span class="ar req">On request</span></div>
+      <div class="more-row static"><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Proposal</span><span class="ar req">On request</span></div>
       </div>
   </div>
 </section>
@@ -1334,6 +1333,50 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     });
   }
   copyTo('copy-btn','email','Email'); copyTo('copy-phone','phone','Phone number');
+})();
+</script>
+<script>
+/* Hover preview for "More from the desk": the report thumbnail follows the cursor */
+(function(){
+  var cards=document.querySelectorAll('.more-row[data-thumb]');
+  if(!cards.length || !window.matchMedia('(hover:hover)').matches) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var peek=document.createElement('div'); peek.className='peek'; peek.setAttribute('aria-hidden','true');
+  var img=document.createElement('img'); img.alt=''; img.decoding='async'; peek.appendChild(img); document.body.appendChild(peek);
+  var W=230,H=307,x=-999,y=-999,tx=-999,ty=-999,raf=0,active=null;
+  function place(cx,cy){
+    var nx=cx+28, ny=cy-H/2;
+    if(nx+W>window.innerWidth-12) nx=cx-W-28;
+    var top=(document.querySelector('header.top')||{offsetHeight:0}).offsetHeight+12;
+    ny=Math.max(top,Math.min(window.innerHeight-H-12,ny));
+    tx=nx; ty=ny;
+  }
+  function tick(){
+    x+= (tx-x)*(reduce?1:.2); y+= (ty-y)*(reduce?1:.2);
+    peek.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+    raf=(Math.abs(tx-x)>.3||Math.abs(ty-y)>.3)?requestAnimationFrame(tick):0;
+  }
+  function go(){ if(!raf) raf=requestAnimationFrame(tick); }
+  function show(card,cx,cy,snap){
+    active=card; var src=card.getAttribute('data-thumb');
+    if(img.getAttribute('src')!==src) img.src=src;
+    place(cx,cy); if(snap||!peek.classList.contains('on')){x=tx;y=ty;}
+    peek.classList.add('on'); go();
+  }
+  function hide(card){ if(active===card){active=null; peek.classList.remove('on');} }
+  cards.forEach(function(c){
+    c.addEventListener('mouseenter',function(e){show(c,e.clientX,e.clientY,true);});
+    c.addEventListener('mousemove',function(e){ if(active===c){place(e.clientX,e.clientY);go();} });
+    c.addEventListener('mouseleave',function(){hide(c);});
+    c.addEventListener('focus',function(){var r=c.getBoundingClientRect(); show(c,r.right-40,r.top+r.height/2,true);});
+    c.addEventListener('blur',function(){hide(c);});
+    c.addEventListener('click',function(){hide(c);});
+  });
+  window.addEventListener('scroll',function(){ if(active&&!active.matches(':hover')) hide(active); },{passive:true});
+  /* warm the cache once the section is near, so the first hover is instant */
+  var warm=function(){cards.forEach(function(c){var i=new Image(); i.src=c.getAttribute('data-thumb');});};
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){warm();io.disconnect();}},{rootMargin:'400px'});io.observe(document.getElementById('desk'));}
+  else warm();
 })();
 </script>
 </body>
