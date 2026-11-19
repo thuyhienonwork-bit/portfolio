@@ -100,8 +100,9 @@ header.top .wrap{max-width:1440px;padding:0 clamp(20px,5vw,72px)}
 .hero h1{grid-area:title;margin:0}
 .hero p.lede{grid-area:lede;max-width:500px;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:#e9eeeb;margin:6px 0 30px}
 .hero .btns{grid-area:btns;gap:14px;flex-wrap:nowrap}
-#candles{opacity:.95}
-.hero::after{background:linear-gradient(90deg,rgba(12,18,16,.88) 0%,rgba(12,18,16,.55) 38%,rgba(12,18,16,.08) 100%),linear-gradient(0deg,rgba(12,18,16,.78) 0%,rgba(12,18,16,0) 45%)}
+#candles{display:none}
+.hero{background:#0a0d0c}
+.hero::after{display:none}
 .hero-line1{font-size:clamp(18px,2.5vw,38px);letter-spacing:.14em}
 .hero-line2{font-size:clamp(58px,10.2vw,156px);margin-top:4px}
 .hero .btn{font-size:11.5px;letter-spacing:.16em;padding:12px 22px}
@@ -117,7 +118,7 @@ header.top .wrap{max-width:1440px;padding:0 clamp(20px,5vw,72px)}
 .hero-dots i{width:5px;height:5px}
 @media (max-width:1180px){.hero .wrap{column-gap:28px}.hero .stat span{white-space:normal}}
 @media (max-width:900px){.hero .btns{flex-wrap:wrap}.hero .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "lede" "btns" "stats";row-gap:0}.hero .stats{margin-top:32px;justify-content:flex-start}}
-@media (max-width:600px){.hero .wrap{min-height:0;padding-top:84px;padding-bottom:40px}.hero .btn{padding:11px 18px}.hero .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;margin-top:30px}.hero .stat span{white-space:normal}.hero-dots{right:34px}.hero-line2{font-size:clamp(40px,14.6vw,64px)}#candles{opacity:.7}.hero::after{background:linear-gradient(90deg,rgba(12,18,16,.9) 0%,rgba(12,18,16,.7) 70%,rgba(12,18,16,.45) 100%),linear-gradient(0deg,rgba(12,18,16,.8) 0%,rgba(12,18,16,0) 50%)}}
+@media (max-width:600px){.hero .wrap{min-height:0;padding-top:84px;padding-bottom:40px}.hero .btn{padding:11px 18px}.hero .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;margin-top:30px}.hero .stat span{white-space:normal}.hero-dots{right:34px}.hero-line2{font-size:clamp(40px,14.6vw,64px)}}
 
 /* Tape */
 .tape{background:#141917;color:#aab6af;overflow:hidden;white-space:nowrap;border-bottom:1px solid #26302b}
@@ -1019,7 +1020,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   var heroOpts = {up:'#1f9d55', dn:'#e0393e', ma:'rgba(255,255,255,.55)', padTop:.12, padBot:.18, grid:true};
   function drawHero(){ draw(heroCv, heroS, heroOpts); }
   drawHero();
-  if (!reduce) setInterval(function(){ heroS.next(); drawHero(); }, 1400);
+  if (!reduce && heroCv.offsetWidth) setInterval(function(){ heroS.next(); drawHero(); }, 1400);
 
   var coverCv = document.getElementById('cover-candles');
   var coverS = makeSeries(26, 3);
