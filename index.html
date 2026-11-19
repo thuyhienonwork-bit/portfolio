@@ -1074,11 +1074,12 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       dpr = Math.min(window.devicePixelRatio || 1, 2); W = hero.clientWidth; H = hero.clientHeight;
       cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-    function box(){                             // full width between the page margins; the price pill ends at the right margin
+    function box(){                             // full bleed: the line starts at the left edge of the screen
       var m = W < 700, cs = getComputedStyle(wrap), r = wrap.getBoundingClientRect(), hr = hero.getBoundingClientRect();
       var L = r.left - hr.left + parseFloat(cs.paddingLeft), R = r.right - hr.left - parseFloat(cs.paddingRight);
       var fs = pillFont(); g.font = '600 ' + fs + 'px Geist, system-ui, sans-serif';
       var pw = g.measureText('$000.00').width + fs * 1.4, gap = m ? 14 : 28;
+      L = 0; R = W - (m ? 10 : 16);             // edge to edge; only the price pill keeps a small gap from the right edge
       return m ? { x0: L, x1: R - pw - gap, y0: 84, y1: 84 + W * 0.30, alpha: .85, m: true, gap: gap, n: 30 }
                : { x0: L, x1: R - pw - gap, y0: H * 0.14, y1: H * 0.56, alpha: .9, gap: gap, n: N };
     }
