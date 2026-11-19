@@ -236,11 +236,6 @@ a.more-row:nth-child(even):hover .tag{background:rgba(224,57,62,.2);color:#ffd0d
 a.more-row:hover .ar{transform:translate(3px,-3px)}
 a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){.more-row,.more-row *{transition:none}a.more-row:hover{transform:none}}
-.peek{position:fixed;left:0;top:0;z-index:60;width:420px;aspect-ratio:16/9;pointer-events:none;opacity:0;scale:.82;rotate:-3deg;transform:translate3d(-999px,-999px,0);background:#fff;border:5px solid #fff;border-radius:6px;box-shadow:0 28px 60px -18px rgba(12,18,16,.55),0 0 0 1px rgba(12,18,16,.08);overflow:hidden;transition:opacity .25s ease, scale .35s cubic-bezier(.2,.9,.3,1.2), rotate .35s ease}
-.peek img{display:block;width:100%;height:100%;object-fit:cover}
-.peek.on{opacity:1;scale:1;rotate:-1.5deg}
-@media (prefers-reduced-motion: reduce){.peek{transition:none;rotate:0deg;scale:1}.peek.on{rotate:0deg}}
-@media (hover:none){.peek{display:none}}
 @media (max-width:1180px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.desk-head p{text-align:left}}
 @media (max-width:720px){.more-list{grid-template-columns:1fr}}
@@ -690,12 +685,12 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       <p>Bonds, portfolios, forecasting and econometrics.<br>Select a card to read the report.</p>
     </div>
       <div class="more-list">
-      <a class="more-row" href="#" data-doc="agb" data-n="22" data-title="Bond Immunisation Strategy and Yield Curve Forecast" data-code="BAFI3271" data-thumb="reports/thumbs/agb.jpg"><span><span class="code">BAFI3271</span><b>Bond Immunisation Strategy and Yield Curve Forecast</b><small>Group report, Debt and Money Markets. My part: the cash-flow matching portfolio and trading simulation. A$267m of liabilities funded for A$220.67m; 5–7-year yields forecast about 10bp lower by January 2027.</small></span><span class="tag">Fixed income</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="eq" data-n="45" data-title="Equity Portfolio Management: Passive and Active Strategies" data-code="BAFI1042" data-thumb="reports/thumbs/eq.jpg"><span><span class="code">BAFI1042</span><b>Equity Portfolio Management: Passive and Active Strategies</b><small>Individual report. The active portfolio returned 4.64% against a 3.81% benchmark, with an information ratio of 2.93.</small></span><span class="tag">Portfolio management</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="t1" data-n="1" data-title="Equity Trading Simulation Report" data-code="BAFI1042" data-thumb="reports/thumbs/t1.jpg"><span><span class="code">BAFI1042</span><b>Equity Trading Simulation Report</b><small>A$50,000 portfolio returned 0.72% (A$358), 2.55% behind the S&P/ASX 200. Key lesson: apply the stop-loss rule consistently.</small></span><span class="tag">Equity trading</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="jpn" data-n="24" data-title="Forecasting Short-Term Visitor Arrivals from Japan to Australia" data-code="ECON1061" data-thumb="reports/thumbs/jpn.jpg"><span><span class="code">ECON1061</span><b>Forecasting Short-Term Visitor Arrivals from Japan to Australia</b><small>Individual report. ARIMA outperformed ETS and the seasonal naïve benchmark on every test-set measure, with a MAPE of 6.9%.</small></span><span class="tag">Forecasting</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="fdi" data-n="12" data-title="Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis" data-code="ECON1066" data-thumb="reports/thumbs/fdi.jpg"><span><span class="code">ECON1066</span><b>Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis</b><small>Group research report, 96 countries. The relationship is positive but small (US$1bn ≈ +0.25% GDP per capita) and appears only above US$4bn of inflows.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
-      <a class="more-row" href="#" data-doc="acct" data-n="8" data-title="Determinants of Financial Account Ownership: An OLS Analysis" data-code="ECON1066" data-thumb="reports/thumbs/acct.jpg"><span><span class="code">ECON1066</span><b>Determinants of Financial Account Ownership: An OLS Analysis</b><small>Individual assignment, 139 countries, R² 0.70. Income is the strongest driver: +1% GDP per capita ≈ +0.18 points of ownership.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="agb" data-n="22" data-title="Bond Immunisation Strategy and Yield Curve Forecast" data-code="BAFI3271"><span><span class="code">BAFI3271</span><b>Bond Immunisation Strategy and Yield Curve Forecast</b><small>Group report, Debt and Money Markets. My part: the cash-flow matching portfolio and trading simulation. A$267m of liabilities funded for A$220.67m; 5–7-year yields forecast about 10bp lower by January 2027.</small></span><span class="tag">Fixed income</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="eq" data-n="45" data-title="Equity Portfolio Management: Passive and Active Strategies" data-code="BAFI1042"><span><span class="code">BAFI1042</span><b>Equity Portfolio Management: Passive and Active Strategies</b><small>Individual report. The active portfolio returned 4.64% against a 3.81% benchmark, with an information ratio of 2.93.</small></span><span class="tag">Portfolio management</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="t1" data-n="1" data-title="Equity Trading Simulation Report" data-code="BAFI1042"><span><span class="code">BAFI1042</span><b>Equity Trading Simulation Report</b><small>A$50,000 portfolio returned 0.72% (A$358), 2.55% behind the S&P/ASX 200. Key lesson: apply the stop-loss rule consistently.</small></span><span class="tag">Equity trading</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="jpn" data-n="24" data-title="Forecasting Short-Term Visitor Arrivals from Japan to Australia" data-code="ECON1061"><span><span class="code">ECON1061</span><b>Forecasting Short-Term Visitor Arrivals from Japan to Australia</b><small>Individual report. ARIMA outperformed ETS and the seasonal naïve benchmark on every test-set measure, with a MAPE of 6.9%.</small></span><span class="tag">Forecasting</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="fdi" data-n="12" data-title="Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis" data-code="ECON1066"><span><span class="code">ECON1066</span><b>Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis</b><small>Group research report, 96 countries. The relationship is positive but small (US$1bn ≈ +0.25% GDP per capita) and appears only above US$4bn of inflows.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
+      <a class="more-row" href="#" data-doc="acct" data-n="8" data-title="Determinants of Financial Account Ownership: An OLS Analysis" data-code="ECON1066"><span><span class="code">ECON1066</span><b>Determinants of Financial Account Ownership: An OLS Analysis</b><small>Individual assignment, 139 countries, R² 0.70. Income is the strongest driver: +1% GDP per capita ≈ +0.18 points of ownership.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
       <div class="more-row static"><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health</span><span class="ar req">On request</span></div>
       <div class="more-row static"><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Proposal</span><span class="ar req">On request</span></div>
       </div>
@@ -1333,51 +1328,6 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     });
   }
   copyTo('copy-btn','email','Email'); copyTo('copy-phone','phone','Phone number');
-})();
-</script>
-<script>
-/* Hover preview for "More from the desk": the report thumbnail follows the cursor */
-(function(){
-  var cards=document.querySelectorAll('.more-row[data-thumb]');
-  if(!cards.length || !window.matchMedia('(hover:hover)').matches) return;
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var peek=document.createElement('div'); peek.className='peek'; peek.setAttribute('aria-hidden','true');
-  var img=document.createElement('img'); img.alt=''; img.decoding='async'; peek.appendChild(img); document.body.appendChild(peek);
-  var W=420,H=236,x=-999,y=-999,tx=-999,ty=-999,raf=0,active=null;
-  function place(cx,cy){
-    var nx=cx+28, ny=cy-H/2;
-    if(nx+W>window.innerWidth-12) nx=cx-W-28;
-    var top=(document.querySelector('header.top')||{offsetHeight:0}).offsetHeight+12;
-    ny=Math.max(top,Math.min(window.innerHeight-H-12,ny));
-    tx=nx; ty=ny;
-  }
-  function tick(){
-    x+= (tx-x)*(reduce?1:.2); y+= (ty-y)*(reduce?1:.2);
-    peek.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
-    raf=(Math.abs(tx-x)>.3||Math.abs(ty-y)>.3)?requestAnimationFrame(tick):0;
-  }
-  function go(){ if(!raf) raf=requestAnimationFrame(tick); }
-  function show(card,cx,cy,snap){
-    active=card; var src=card.getAttribute('data-thumb');
-    W=Math.round(Math.min(480,Math.max(300,card.getBoundingClientRect().width))); H=Math.round(W*9/16); peek.style.width=W+'px';
-    if(img.getAttribute('src')!==src) img.src=src;
-    place(cx,cy); if(snap||!peek.classList.contains('on')){x=tx;y=ty;}
-    peek.classList.add('on'); go();
-  }
-  function hide(card){ if(active===card){active=null; peek.classList.remove('on');} }
-  cards.forEach(function(c){
-    c.addEventListener('mouseenter',function(e){show(c,e.clientX,e.clientY,true);});
-    c.addEventListener('mousemove',function(e){ if(active===c){place(e.clientX,e.clientY);go();} });
-    c.addEventListener('mouseleave',function(){hide(c);});
-    c.addEventListener('focus',function(){var r=c.getBoundingClientRect(); show(c,r.right-40,r.top+r.height/2,true);});
-    c.addEventListener('blur',function(){hide(c);});
-    c.addEventListener('click',function(){hide(c);});
-  });
-  window.addEventListener('scroll',function(){ if(active&&!active.matches(':hover')) hide(active); },{passive:true});
-  /* warm the cache once the section is near, so the first hover is instant */
-  var warm=function(){cards.forEach(function(c){var i=new Image(); i.src=c.getAttribute('data-thumb');});};
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){warm();io.disconnect();}},{rootMargin:'400px'});io.observe(document.getElementById('desk'));}
-  else warm();
 })();
 </script>
 </body>
