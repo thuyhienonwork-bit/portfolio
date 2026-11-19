@@ -1062,7 +1062,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     var cv = document.getElementById('hero-chart'), hero = cv && cv.parentNode;
     if (!cv || !cv.getContext) return;
     var g = cv.getContext('2d'), W = 0, H = 0, dpr = 1;
-    var STEP = 0.32, N = 56;                    // seconds per new point, max points on screen
+    var STEP = 0.22, N = 56;                    // seconds per new point, max points on screen
     var GREEN = '#5fd47c', RED = '#ef5a5f', YEL = '#f5d76e';
     var seed = 42; function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
     var pts = [], v = 900;
@@ -1095,7 +1095,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       g.fill();
     }
     function burst(k0){                          // one wave: hearts rise one after another, newest in front
-      for (var k = 0; k < 3; k++) hearts.push({ x: headX, y: headY, vx: (rnd() - .4) * 40, vy: -(95 + rnd() * 30), s: (20 + rnd() * 6) * k0, gs: (30 + rnd() * 18) * k0, life: 0, max: 1.1 + rnd() * .2, d: k * .14 });
+      for (var k = 0; k < 3; k++) hearts.push({ x: headX, y: headY, vx: (rnd() - .4) * 40, vy: -(95 + rnd() * 30), s: (13 + rnd() * 4) * k0, gs: (18 + rnd() * 10) * k0, life: 0, max: 1.1 + rnd() * .2, d: k * .14 });
     }
     function pill(x, y, text, up){
       var fs = pillFont();
