@@ -444,28 +444,6 @@ html.rv .rv-item{opacity:.18;transform:translateY(34px);transition:opacity .8s c
 html.rv .rv-item.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){html.rv .rv-item{opacity:1;transform:none;transition:none}}
 
-/* ---------- Experience ---------- */
-.exp{background:var(--ink);color:#eef2ef;padding:100px 0}
-.exp .sec-head h2{color:#f3f2ed}
-.exp .sec-head h2 .g{color:#4fd18a}
-.exp .sec-head p{color:#a9b6ae}
-.jobs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #2a3530}
-.job{padding:34px 28px 38px 0;border-right:1px solid #2a3530}
-.job+.job{padding-left:28px}
-.job:last-child{border-right:0}
-.job .num{font-family:var(--display);font-weight:900;font-size:48px;line-height:1;color:transparent;-webkit-text-stroke:1.5px #4fd18a}
-.job:nth-child(even) .num{-webkit-text-stroke-color:#ff6b6f}
-.job .when{font-family:var(--mono);font-size:13px;color:#93a39a;margin:22px 0 8px}
-.job h3{font-size:17.5px;font-weight:700;line-height:1.25}
-.job .org{color:#4fd18a;font-weight:600;margin:6px 0 14px}
-.job:nth-child(even) .org{color:#ff8a8d}
-.job p{margin:0;color:#b8c4bd;font-size:14.5px}
-@media (max-width:960px){.jobs{grid-template-columns:repeat(2,minmax(0,1fr))}.job:nth-child(3){padding-left:0}.job:nth-child(2){border-right:0}.job:nth-child(n+3){border-top:1px solid #2a3530}}
-@media (max-width:560px){.jobs{grid-template-columns:1fr}.job,.job+.job{padding-left:0;border-right:0}.job+.job{border-top:1px solid #2a3530}}
-.kit{display:flex;flex-wrap:wrap;gap:10px;margin-top:54px}
-.kit span{border:1px solid #33413a;padding:8px 14px;font-size:14px;color:#cdd6d0}
-.kit span b{color:#4fd18a;font-family:var(--mono);font-weight:500;margin-right:8px;font-size:12px}
-
 /* ---------- Contact ---------- */
 .contact{background:var(--bull-deep);color:#fff;overflow:hidden}
 .ticker{white-space:nowrap;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.2)}
@@ -529,7 +507,6 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <li><a href="#dossier">Research</a></li>
         <li><a href="#studio">Studio</a></li>
         <li class="opt"><a href="#coursework">Coursework</a></li>
-        <li class="opt"><a href="#experience">Experience</a></li>
         <li><a href="#hall">Hall of Fame</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -868,24 +845,6 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="exp" id="experience" aria-label="Experience">
-  <div class="wrap">
-    <div class="sec-head">
-      <p>Corporate finance, real estate investment and business development in Vietnam.</p>
-    </div>
-    <div class="jobs">
-      <div class="job"><div class="num">01</div><div class="when">Dec 2025 – Mar 2026</div><h3>Corporate Finance Advisory Intern</h3><div class="org">FPT Securities (FPTS)</div><p>Supported the advisory team on corporate finance client work.</p></div>
-      <div class="job"><div class="num">02</div><div class="when">Aug 2025 – Nov 2025</div><h3>Investment Intern</h3><div class="org">Savills Vietnam</div><p>Supported the investment team on real estate investment work.</p></div>
-      <div class="job"><div class="num">03</div><div class="when">Jan 2025 – Jul 2025</div><h3>Business Development Intern</h3><div class="org">Liberty Technology</div><p>Worked on business development and client outreach.</p></div>
-      <div class="job"><div class="num">04</div><div class="when">2024</div><h3>Leadership roles</h3><div class="org">AIESEC in Vietnam</div><p>Led teams in the student-run international organisation.</p></div>
-    </div>
-    <div class="kit" aria-label="Toolkit">
-      <span><b>01</b>R · fpp3</span><span><b>02</b>Excel modelling</span><span><b>03</b>LSEG Workspace</span><span><b>04</b>ARIMA / ETS</span><span><b>05</b>OLS regression</span><span><b>06</b>Bond immunisation</span><span><b>07</b>Technical analysis</span><span><b>08</b>Qualtrics · NVivo</span><span><b>09</b>English · Tiếng Việt · 中文</span><span><b>10</b>IELTS 7.5</span>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="ticker" aria-hidden="true">
@@ -940,7 +899,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <div>thuyhien.onwork@gmail.com</div>
         <div>+61 423 506 096</div>
       </div>
-      <div><h4>Research</h4><ul><li><a href="#dossier">Research dossier</a></li><li><a href="#coursework">Coursework</a></li><li><a href="#experience">Experience</a></li><li><a href="#hall">Hall of Fame</a></li></ul></div>
+      <div><h4>Research</h4><ul><li><a href="#dossier">Research dossier</a></li><li><a href="#coursework">Coursework</a></li><li><a href="#hall">Hall of Fame</a></li></ul></div>
       <div><h4>Studio</h4><ul><li><a href="#studio">Market moves</a></li><li><a href="#studio">Economics 101</a></li><li><a href="#studio">Investing essentials</a></li></ul></div>
       <div><h4>Elsewhere</h4><ul><li><a href="https://www.linkedin.com/in/thuyhienonwork/">LinkedIn</a></li><li><a href="https://github.com/thuyhienonwork-bit">GitHub</a></li><li><a href="#">YouTube</a></li><li><a href="#">TikTok</a></li><li><a href="https://thuyhienonwork.wixsite.com/denieh">Earlier portfolio</a></li></ul></div>
     </div>
@@ -1312,7 +1271,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   (function(){
     if (reduce || !('IntersectionObserver' in window)) return;
     var sel = ['.about-grid > *','.dossier-head','.tabs','.panel','.desk-head','.more-row','.studio-top > *','.series','.episode > *','.post',
-      '.course .sec-head','.cg','.hof-top > *','.spot-img','.spot-txt','.rec-label','.rec-row','.exp .sec-head','.job','.kit','.contact .wrap > *','.foot > *'].join(',');
+      '.course .sec-head','.cg','.hof-top > *','.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
     var items = Array.prototype.slice.call(document.querySelectorAll(sel));
     var vh = window.innerHeight;
     items = items.filter(function(el){ return el.getBoundingClientRect().top > vh * 0.9; });
