@@ -205,39 +205,45 @@ nav a:hover{color:#fff}
 .deeper .acts{display:flex;flex-direction:column;gap:20px;align-items:flex-end}
 .deeper .acts a{font-weight:700;text-decoration:none;display:inline-flex;gap:14px}
 .deeper .acts a:hover{color:var(--bull-deep)}
-.more{margin-top:70px}
-.more-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #2f4a3b;padding-bottom:16px;margin-bottom:6px}
-.more-head span{color:#9fb2a7;font-size:15px}
-.more-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:26px}
-.more-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;column-gap:12px;background:rgba(255,255,255,.04);border:1px solid #2f4a3b;border-radius:6px;overflow:hidden;text-decoration:none;color:#eef2ef;transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
-.more-row::before{content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:4px;background:#4fd18a;transition:height .25s ease}
+.desk{background:var(--paper);color:var(--ink);padding:96px 0 110px;border-top:1px solid var(--rule)}
+.desk .wrap{max-width:1440px;padding:0 clamp(16px,3vw,48px)}
+.desk .kicker{color:var(--bull-deep)}
+.desk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin:20px 0 44px;padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.desk-head h2{font-size:clamp(40px,5.5vw,80px);color:var(--forest)}
+.desk-head h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
+.desk-head p{margin:0;text-align:right;font-size:16px;color:var(--muted);line-height:1.7}
+.more-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.more-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;column-gap:12px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+.more-row::before{content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:4px;background:var(--bull);transition:height .25s ease}
 .more-row:nth-child(even)::before{background:var(--bear)}
-.more-row .thumb{grid-column:1 / -1;position:relative;display:block;aspect-ratio:16/10;background:#f3f2ed;overflow:hidden;border-bottom:1px solid #2f4a3b}
+.more-row .thumb{grid-column:1 / -1;position:relative;display:block;aspect-ratio:16/10;background:#fff;overflow:hidden;border-bottom:1px solid var(--rule)}
 .more-row .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform .5s ease}
-.more-row .thumb.ph{display:flex;align-items:center;justify-content:center;background:#16301f;background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.05) 27px 28px)}
-.more-row .thumb.ph span{font-family:var(--serif);font-style:italic;font-size:28px;color:#d7eedf;text-align:center;padding:0 20px}
-.more-row > span:nth-child(2){grid-column:1 / -1;padding:20px 22px 0}
-.more-row .code{display:block;margin-bottom:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:#4fd18a}
-.more-row:nth-child(even) .code{color:#ff8a8d}
-.more-row b{font-size:16.5px;font-weight:650;line-height:1.3;display:block;color:#fff;transition:color .25s ease}
-.more-row small{display:block;color:#9fb2a7;font-size:13.5px;line-height:1.5;margin-top:8px;transition:color .25s ease}
-.more-row .tag{align-self:end;justify-self:start;margin:18px 0 20px 22px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#d7f2e2;background:rgba(79,209,138,.12);padding:5px 10px;border-radius:99px}
-.more-row:nth-child(even) .tag{background:rgba(224,57,62,.16);color:#ffd0d2}
-.more-row .ar{align-self:end;justify-self:end;margin:0 22px 20px 0;font-size:20px;line-height:1.4;transition:transform .25s ease}
-a.more-row:hover{background:#e6e9e2;border-color:#e6e9e2;transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(0,0,0,.85)}
+.more-row .thumb.ph{display:flex;align-items:center;justify-content:center;background:var(--forest);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.05) 27px 28px)}
+.more-row .thumb.ph span{font-family:var(--serif);font-style:italic;font-size:26px;color:#d7eedf;text-align:center;padding:0 20px}
+.more-row > span:nth-child(2){grid-column:1 / -1;padding:20px 20px 0}
+.more-row .code{display:block;margin-bottom:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--bull-deep)}
+.more-row:nth-child(even) .code{color:#b7262c}
+.more-row b{font-size:16px;font-weight:650;line-height:1.3;display:block;color:var(--forest);transition:color .25s ease}
+.more-row small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:8px;transition:color .25s ease}
+.more-row .tag{align-self:end;justify-self:start;margin:18px 0 20px 20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--bull-deep);background:var(--bull-soft);padding:5px 10px;border-radius:99px;transition:background .25s ease, color .25s ease}
+.more-row:nth-child(even) .tag{background:var(--bear-soft);color:#b7262c}
+.more-row .ar{align-self:end;justify-self:end;margin:0 20px 20px 0;font-size:20px;line-height:1.4;color:var(--forest);transition:transform .25s ease, color .25s ease}
+.more-row .ar.req{white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+a.more-row:hover{background:var(--forest);border-color:var(--forest);transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(12,18,16,.55)}
 a.more-row:hover::before{height:6px}
 a.more-row:hover .thumb img{transform:scale(1.04)}
-a.more-row:hover b{color:var(--forest)}
-a.more-row:hover small{color:var(--muted)}
-a.more-row:hover .code{color:var(--bull-deep)}
-a.more-row:nth-child(even):hover .code{color:#b7262c}
-a.more-row:hover .tag{background:var(--bull-soft);color:var(--bull-deep)}
-a.more-row:nth-child(even):hover .tag{background:var(--bear-soft);color:#b7262c}
-a.more-row:hover .ar{color:var(--forest);transform:translate(3px,-3px)}
-a.more-row:focus-visible{outline:2px solid #4fd18a;outline-offset:3px}
+a.more-row:hover b,a.more-row:hover .ar{color:#fff}
+a.more-row:hover small{color:#c8d2cc}
+a.more-row:hover .code{color:#4fd18a}
+a.more-row:nth-child(even):hover .code{color:#ff8a8d}
+a.more-row:hover .tag{background:rgba(79,209,138,.16);color:#d7f2e2}
+a.more-row:nth-child(even):hover .tag{background:rgba(224,57,62,.2);color:#ffd0d2}
+a.more-row:hover .ar{transform:translate(3px,-3px)}
+a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){.more-row,.more-row *{transition:none}a.more-row:hover{transform:none}a.more-row:hover .thumb img{transform:none}}
-@media (max-width:960px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.more-list{grid-template-columns:1fr}.more-head{flex-direction:column;gap:6px}}
+@media (max-width:1180px){.more-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}.desk-head p{text-align:left}}
+@media (max-width:560px){.more-list{grid-template-columns:1fr}}
 
 .view-tog{display:inline-flex;border:1px solid var(--forest)}
 .view-tog button{all:unset;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;color:var(--forest)}
@@ -265,7 +271,6 @@ a.more-row:focus-visible{outline:2px solid #4fd18a;outline-offset:3px}
 .slide-nav button:focus-visible{outline:2px solid #4fd18a}
 
 .more-row.static{cursor:default}
-.more-row .ar.req{white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:#9fb2a7;text-transform:uppercase}
 .reader{position:fixed;inset:0;z-index:100;background:rgba(8,14,11,.82);display:flex;align-items:center;justify-content:center;padding:clamp(10px,3vw,40px)}
 .reader[hidden]{display:none}
 .reader-box{width:min(920px,100%);height:100%;background:var(--paper);display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
@@ -673,8 +678,17 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       </div>
     </div>
 
-    <div class="more">
-      <div class="more-head"><span class="kicker" style="color:#7fd6a3">More from the desk</span><span>Shorter pieces and earlier research</span></div>
+  </div>
+</section>
+
+<!-- MORE FROM THE DESK -->
+<section class="desk" id="desk" aria-labelledby="desk-title">
+  <div class="wrap">
+    <div class="kicker">Research / Shorter pieces &amp; earlier work</div>
+    <div class="desk-head">
+      <h2 class="disp" id="desk-title">More from<span class="ital">the desk.</span></h2>
+      <p>Bonds, portfolios, forecasting and econometrics.<br>Select a card to read the report.</p>
+    </div>
       <div class="more-list">
       <a class="more-row" href="#" data-doc="agb" data-n="22" data-title="Bond Immunisation Strategy and Yield Curve Forecast" data-code="BAFI3271"><span class="thumb"><img src="reports/thumbs/agb.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">BAFI3271</span><b>Bond Immunisation Strategy and Yield Curve Forecast</b><small>Group report, Debt and Money Markets. My part: the cash-flow matching portfolio and trading simulation. A$267m of liabilities funded for A$220.67m; 5–7-year yields forecast about 10bp lower by January 2027.</small></span><span class="tag">Fixed income</span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="more-row" href="#" data-doc="eq" data-n="45" data-title="Equity Portfolio Management: Passive and Active Strategies" data-code="BAFI1042"><span class="thumb"><img src="reports/thumbs/eq.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">BAFI1042</span><b>Equity Portfolio Management: Passive and Active Strategies</b><small>Individual report. The active portfolio returned 4.64% against a 3.81% benchmark, with an information ratio of 2.93.</small></span><span class="tag">Portfolio management</span><span class="ar" aria-hidden="true">↗</span></a>
@@ -685,7 +699,6 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Two book chapters</span></span><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health research</span><span class="ar req">On request</span></div>
       <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Research proposal</span></span><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Research proposal</span><span class="ar req">On request</span></div>
       </div>
-    </div>
   </div>
 </section>
 
@@ -1295,7 +1308,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   /* ---------- Scroll reveal ---------- */
   (function(){
     if (reduce || !('IntersectionObserver' in window)) return;
-    var sel = ['.about-grid > *','.dossier-head','.tabs','.panel','.more-row','.studio-top > *','.series','.episode > *','.post',
+    var sel = ['.about-grid > *','.dossier-head','.tabs','.panel','.desk-head','.more-row','.studio-top > *','.series','.episode > *','.post',
       '.course .sec-head','.cg','.hof-top > *','.spot-img','.spot-txt','.rec-label','.rec-row','.exp .sec-head','.job','.kit','.contact .wrap > *','.foot > *'].join(',');
     var items = Array.prototype.slice.call(document.querySelectorAll(sel));
     var vh = window.innerHeight;
