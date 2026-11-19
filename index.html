@@ -377,12 +377,12 @@ a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 #confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
 .hof .wrap{position:relative;z-index:2}
 .hof .kicker.top{color:var(--bull-deep)}
-.hof-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:60px;align-items:end;margin-top:22px}
+.hof-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:60px;align-items:end;margin-top:22px}
 .hof-top h2{font-size:clamp(52px,7.5vw,112px);color:var(--forest)}
 .hof-top h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
 .hof-top .intro{font-size:17px;color:var(--muted);margin:0 0 26px;max-width:42ch}
-.hof-stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0 34px;margin-bottom:26px}
-.hof-stats b{display:block;font-family:var(--display);font-weight:850;font-size:34px;letter-spacing:-.02em;line-height:1;color:var(--forest)}
+.hof-stats{display:flex;flex-wrap:wrap;gap:20px 28px;margin-bottom:26px}
+.hof-stats b{display:block;white-space:nowrap;font-family:var(--display);font-weight:850;font-size:32px;letter-spacing:-.02em;line-height:1;color:var(--forest)}
 .hof-stats span{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .hof-stats div{border-left:3px solid var(--bull);padding-left:14px}
 .hof-stats div:nth-child(2){border-left-color:var(--bear)}
@@ -521,7 +521,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <rect x="16" y="9" width="5" height="16" fill="#1f9d55"/><line x1="18.5" y1="4" x2="18.5" y2="29" stroke="#1f9d55" stroke-width="1.5"/>
         <rect x="28" y="4" width="5" height="13" fill="#1f9d55"/><line x1="30.5" y1="1" x2="30.5" y2="21" stroke="#1f9d55" stroke-width="1.5"/>
       </svg>
-      <span class="brand-txt"><b>RIS NGUYEN</b><span>Finance · Research</span></span>
+      <span class="brand-txt"><b>RIS NGUYEN</b></span>
     </a>
     <nav aria-label="Main">
       <ul>
@@ -556,7 +556,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     </div>
     <div class="stats">
       <div class="stat"><b>2<sup>+</sup></b><span>Finance internships</span></div>
-      <div class="stat"><b>3</b><span>High Distinctions</span></div>
+      <div class="stat"><b>4</b><span>High Distinctions</span></div>
       <div class="stat"><b>2</b><span>Book chapters</span></div>
       <div class="stat"><b>4</b><span>Scholarships</span></div>
     </div>
@@ -792,7 +792,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
           <li><b>Equity Investment and Portfolio Management</b><small>Sem 2 2026 · Melbourne</small><span class="res ip">In progress</span></li>
           <li><b>Money and Debt Markets</b><small>Sem 2 2026 · Melbourne</small><span class="res ip">In progress</span></li>
           <li><b>Financial Markets and Institutions</b><small>Sem 3 2025 · Vietnam</small></li>
-          <li><b>Understanding the Business Environment</b><small>Sem 3 2025 · Vietnam</small><span class="res di">DI</span></li>
+          <li><b>Understanding the Business Environment</b><small>Sem 3 2025 · Vietnam</small><span class="res hd">HD</span></li>
         </ul>
       </div>
       <div class="cg">
@@ -829,7 +829,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <div class="hof-stats">
           <div><b id="hof-count">6</b><span>Entries</span></div>
           <div><b>4</b><span>Scholarships</span></div>
-          <div><b>2023–26</b><span>On record</span></div>
+          <div><b>2023–2026</b><span>On record</span></div>
         </div>
         <button type="button" id="celebrate">Celebrate <span aria-hidden="true">✦</span></button>
       </div>
@@ -869,10 +869,9 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 </section>
 
 <!-- EXPERIENCE -->
-<section class="exp" id="experience" aria-labelledby="exp-title">
+<section class="exp" id="experience" aria-label="Experience">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="disp" id="exp-title">On the <span class="g">job.</span></h2>
       <p>Corporate finance, real estate investment and business development in Vietnam.</p>
     </div>
     <div class="jobs">
@@ -936,7 +935,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   <div class="wrap">
     <div class="foot">
       <div>
-        <span class="brand-txt"><b style="color:#fff">RIS NGUYEN</b><span>Finance · Research</span></span>
+        <span class="brand-txt"><b style="color:#fff">RIS NGUYEN</b></span>
         <div class="tag">Analysis people can act on.</div>
         <div>thuyhien.onwork@gmail.com</div>
         <div>+61 423 506 096</div>
