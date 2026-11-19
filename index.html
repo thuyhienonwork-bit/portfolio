@@ -212,25 +212,25 @@ nav a:hover{color:#fff}
 .desk-head h2{font-size:clamp(40px,5.5vw,80px);color:var(--forest)}
 .desk-head h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
 .desk-head p{margin:0;text-align:right;font-size:16px;color:var(--muted);line-height:1.7}
-.more-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.more-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;column-gap:12px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
-.more-row::before{content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:4px;background:var(--bull);transition:height .25s ease}
+.more-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.more-row{position:relative;display:grid;grid-template-columns:40% minmax(0,1fr) auto;grid-template-rows:1fr auto;column-gap:10px;min-height:240px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+.more-row::before{content:"";position:absolute;z-index:2;left:0;top:0;bottom:0;width:4px;background:var(--bull);transition:width .25s ease}
 .more-row:nth-child(even)::before{background:var(--bear)}
-.more-row .thumb{grid-column:1 / -1;position:relative;display:block;aspect-ratio:16/10;background:#fff;overflow:hidden;border-bottom:1px solid var(--rule)}
-.more-row .thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform .5s ease}
+.more-row .thumb{grid-column:1;grid-row:1 / -1;position:relative;display:block;background:#fff;overflow:hidden;border-right:1px solid var(--rule)}
+.more-row .thumb img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .5s ease}
 .more-row .thumb.ph{display:flex;align-items:center;justify-content:center;background:var(--forest);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(255,255,255,.05) 27px 28px)}
-.more-row .thumb.ph span{font-family:var(--serif);font-style:italic;font-size:26px;color:#d7eedf;text-align:center;padding:0 20px}
-.more-row > span:nth-child(2){grid-column:1 / -1;padding:20px 20px 0}
-.more-row .code{display:block;margin-bottom:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--bull-deep)}
+.more-row .thumb.ph span{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.1;color:#d7eedf;text-align:center;padding:0 20px}
+.more-row > span:nth-child(2){grid-column:2 / -1;grid-row:1;padding:18px 18px 0 6px}
+.more-row .code{display:block;margin-bottom:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--bull-deep)}
 .more-row:nth-child(even) .code{color:#b7262c}
-.more-row b{font-size:16px;font-weight:650;line-height:1.3;display:block;color:var(--forest);transition:color .25s ease}
-.more-row small{display:block;color:var(--muted);font-size:13.5px;line-height:1.5;margin-top:8px;transition:color .25s ease}
-.more-row .tag{align-self:end;justify-self:start;margin:18px 0 20px 20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--bull-deep);background:var(--bull-soft);padding:5px 10px;border-radius:99px;transition:background .25s ease, color .25s ease}
+.more-row b{font-size:15px;font-weight:650;line-height:1.3;display:block;color:var(--forest);transition:color .25s ease}
+.more-row small{display:block;color:var(--muted);font-size:12.5px;line-height:1.5;margin-top:6px;transition:color .25s ease}
+.more-row .tag{grid-column:2;grid-row:2;align-self:end;justify-self:start;margin:12px 0 16px 6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--bull-deep);background:var(--bull-soft);padding:5px 10px;border-radius:99px;transition:background .25s ease, color .25s ease}
 .more-row:nth-child(even) .tag{background:var(--bear-soft);color:#b7262c}
-.more-row .ar{align-self:end;justify-self:end;margin:0 20px 20px 0;font-size:20px;line-height:1.4;color:var(--forest);transition:transform .25s ease, color .25s ease}
+.more-row .ar{grid-column:3;grid-row:2;align-self:end;justify-self:end;margin:0 16px 16px 0;font-size:20px;line-height:1.4;color:var(--forest);transition:transform .25s ease, color .25s ease}
 .more-row .ar.req{white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-a.more-row:hover{background:var(--forest);border-color:var(--forest);transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(12,18,16,.55)}
-a.more-row:hover::before{height:6px}
+a.more-row:hover{background:var(--forest);border-color:var(--forest);transform:translateY(-3px);box-shadow:0 22px 40px -22px rgba(12,18,16,.55)}
+a.more-row:hover::before{width:6px}
 a.more-row:hover .thumb img{transform:scale(1.04)}
 a.more-row:hover b,a.more-row:hover .ar{color:#fff}
 a.more-row:hover small{color:#c8d2cc}
@@ -241,9 +241,10 @@ a.more-row:nth-child(even):hover .tag{background:rgba(224,57,62,.2);color:#ffd0d
 a.more-row:hover .ar{transform:translate(3px,-3px)}
 a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 @media (prefers-reduced-motion: reduce){.more-row,.more-row *{transition:none}a.more-row:hover{transform:none}a.more-row:hover .thumb img{transform:none}}
-@media (max-width:1180px){.more-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:900px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}.desk-head p{text-align:left}}
-@media (max-width:560px){.more-list{grid-template-columns:1fr}}
+@media (max-width:1180px){.more-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.desk-head p{text-align:left}}
+@media (max-width:720px){.more-list{grid-template-columns:1fr}}
+@media (max-width:420px){.more-row{grid-template-columns:34% minmax(0,1fr) auto;min-height:200px}.more-row .thumb.ph span{font-size:18px}}
 
 .view-tog{display:inline-flex;border:1px solid var(--forest)}
 .view-tog button{all:unset;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;color:var(--forest)}
@@ -696,8 +697,8 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
       <a class="more-row" href="#" data-doc="jpn" data-n="24" data-title="Forecasting Short-Term Visitor Arrivals from Japan to Australia" data-code="ECON1061"><span class="thumb"><img src="reports/thumbs/jpn.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1061</span><b>Forecasting Short-Term Visitor Arrivals from Japan to Australia</b><small>Individual report. ARIMA outperformed ETS and the seasonal naïve benchmark on every test-set measure, with a MAPE of 6.9%.</small></span><span class="tag">Forecasting</span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="more-row" href="#" data-doc="fdi" data-n="12" data-title="Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis" data-code="ECON1066"><span class="thumb"><img src="reports/thumbs/fdi.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1066</span><b>Foreign Direct Investment and GDP per Capita: A Cross-Country Analysis</b><small>Group research report, 96 countries. The relationship is positive but small (US$1bn ≈ +0.25% GDP per capita) and appears only above US$4bn of inflows.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
       <a class="more-row" href="#" data-doc="acct" data-n="8" data-title="Determinants of Financial Account Ownership: An OLS Analysis" data-code="ECON1066"><span class="thumb"><img src="reports/thumbs/acct.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></span><span><span class="code">ECON1066</span><b>Determinants of Financial Account Ownership: An OLS Analysis</b><small>Individual assignment, 139 countries, R² 0.70. Income is the strongest driver: +1% GDP per capita ≈ +0.18 points of ownership.</small></span><span class="tag">Econometrics</span><span class="ar" aria-hidden="true">↗</span></a>
-      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Two book chapters</span></span><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health research</span><span class="ar req">On request</span></div>
-      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Research proposal</span></span><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Research proposal</span><span class="ar req">On request</span></div>
+      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Two book chapters</span></span><span><span class="code">BOOK</span><b>Cardiovascular Disease in Low- and Middle-Income Countries</b><small>Two co-written book chapters (CVD overview; the role of ageing in CVD), mentored by Stanford-affiliated researchers.</small></span><span class="tag">Health</span><span class="ar req">On request</span></div>
+      <div class="more-row static"><span class="thumb ph" aria-hidden="true"><span>Research proposal</span></span><span><span class="code">MKTG1459</span><b>Medication Adherence among Patients with Diabetes in Vietnam</b><small>Mixed-methods research proposal using NVivo, NodeXL and Qualtrics.</small></span><span class="tag">Proposal</span><span class="ar req">On request</span></div>
       </div>
   </div>
 </section>
