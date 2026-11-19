@@ -925,7 +925,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
   var lenis = null;
   if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
   if (!reduce && window.Lenis && window.gsap && window.ScrollTrigger){
-    lenis = new Lenis({ autoRaf:false, anchors:{ offset:-72 } });
+    lenis = new Lenis({ autoRaf:false, lerp:0.2, wheelMultiplier:1.1, anchors:{ offset:-72 } });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
