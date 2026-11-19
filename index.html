@@ -238,11 +238,6 @@ header.top .wrap{max-width:1440px;padding:0 clamp(20px,5vw,72px)}
 .desk-head h2 .ital{display:block;color:var(--bear);font-size:1.02em;line-height:1;margin-top:-.04em}
 .desk-head p{margin:0;text-align:right;font-size:16px;color:var(--muted);line-height:1.7}
 .desk-head .gl-l{display:inline-block}
-html.rv .desk-head .gl{opacity:.18;transition:opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.4s cubic-bezier(.22,1,.36,1)}
-html.rv .desk-head .gl-l{transform:translateX(-90px)}
-html.rv .desk-head .gl-r{transform:translateX(120px);transition-delay:.18s}
-html.rv .desk-head.in .gl{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){html.rv .desk-head .gl{opacity:1;transform:none;transition:none}}
 .more-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .more-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto;column-gap:10px;min-height:200px;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;text-decoration:none;color:var(--ink);transition:background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease}
 .more-row::before{content:"";position:absolute;z-index:2;left:0;top:0;bottom:0;width:4px;background:var(--bull);transition:width .25s ease}
@@ -470,10 +465,6 @@ a.more-row:focus-visible{outline:2px solid var(--bull);outline-offset:3px}
 @media (max-width:1180px){#files{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:720px){#files{grid-template-columns:1fr}.rec-row{min-height:0;padding:18px 18px 18px 24px}.rec-row .amt{font-size:26px}}
 
-/* ---------- Scroll reveal ---------- */
-html.rv .rv-item{opacity:.18;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)}
-html.rv .rv-item.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){html.rv .rv-item{opacity:1;transform:none;transition:none}}
 
 /* ---------- Contact ---------- */
 .contact{background:var(--bull-deep);color:#fff;overflow:hidden}
@@ -1313,23 +1304,38 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     sc.addEventListener('scroll', upd, {passive:true});
   })();
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- Scroll reveal: GSAP + ScrollTrigger (synced with Lenis above) ---------- */
   (function(){
-    if (reduce || !('IntersectionObserver' in window)) return;
-    var sel = ['.about-grid > *','.dossier-head','.tabs','.panel','.desk-head','.more-row','.studio-top > *','.series','.episode > *','.post',
-      '.course .sec-head','.cg','.hof-top > *','.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
-    var items = Array.prototype.slice.call(document.querySelectorAll(sel));
-    var vh = window.innerHeight;
-    items = items.filter(function(el){ return el.getBoundingClientRect().top > vh * 0.9; });
-    if (!items.length) return;
-    document.documentElement.classList.add('rv');
-    items.forEach(function(el){
-      el.classList.add('rv-item');
-      var sib = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
-      el.style.transitionDelay = Math.min(sib, 4) * 90 + 'ms';
+    if (!window.gsap || !window.ScrollTrigger) return;
+    var mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', function(){
+      /* Hero: plays once on load */
+      gsap.timeline({ defaults:{ ease:'power3.out' } })
+        .from('.hero-flag, .hero-dots', { opacity:0, duration:.8 }, 0)
+        .from('.hero-line1', { y:28, opacity:0, duration:.7 }, .1)
+        .from('.hero-line2 > span', { yPercent:55, opacity:0, duration:.9, stagger:.12 }, .25)
+        .from('.hero .lede', { y:24, opacity:0, duration:.7 }, .6)
+        .from('.hero .btns > *', { y:18, opacity:0, duration:.6, stagger:.08 }, .75)
+        .from('.hero .stat', { y:18, opacity:0, duration:.6, stagger:.08 }, .85);
+
+      /* Every other block slides up and fades in as it reaches the viewport, a few at a time */
+      var sel = ['.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
+        '.studio-top > *','.series-label','.series','.episode > *','.post','.course .sec-head','.cg','.hof .kicker.top','.hof-top > *',
+        '.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
+      var items = gsap.utils.toArray(sel).filter(function(el, i, arr){
+        return !el.closest('.hero') && !arr.some(function(o){ return o !== el && o.contains(el); });
+      });
+      gsap.set(items, { opacity:0, y:56 });
+      ScrollTrigger.batch(items, {
+        start:'top 92%', once:true, interval:.1, batchMax:4,
+        onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); }
+      });
+
+      /* 'More from the desk' heading glides in from both sides */
+      var dh = { trigger:'.desk-head', start:'top 85%', once:true };
+      gsap.from('.desk-head .gl-l', { x:-90, duration:1.2, ease:'power3.out', scrollTrigger:dh });
+      gsap.from('.desk-head .gl-r', { x:120, duration:1.3, delay:.15, ease:'power3.out', scrollTrigger:dh });
     });
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
-    items.forEach(function(el){ io.observe(el); });
   })();
 
   /* ---------- Copy email ---------- */
