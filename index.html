@@ -186,6 +186,11 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .ab-hello small{font-size:12.5px;color:#b9c6be}
 .eyebrow-sq{display:flex;align-items:center;gap:14px;color:var(--forest)}
 .eyebrow-sq::before{content:"";width:16px;height:16px;background:var(--bear)}
+/* "Who I am" in the same style and on-screen size as the dashboard's "Hi, I'm Ris." */
+.ab-title{font-family:"Space Grotesk",var(--body);font-weight:600;font-size:40px;letter-spacing:-.03em;line-height:1.05;color:var(--forest)}
+@media (max-width:640px){.ab-title{font-size:34px}}
+@media (min-width:1200px){.ab-title{font-size:32px}}
+@media (min-width:1440px){.ab-title{font-size:33px}}
 .ab-head{font-family:var(--display);font-weight:850;font-stretch:92%;font-size:clamp(30px,3.4vw,48px);line-height:1.22;letter-spacing:-.03em;color:var(--forest);margin:24px 0 26px;}
 .chip{display:inline-block;padding:.04em .3em .1em;line-height:1.05;border:3px solid var(--forest);border-radius:10px;position:relative}
 .chip.r{background:var(--bear);color:#fff;transform:rotate(.6deg)}
@@ -840,7 +845,7 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
       <figcaption class="ab-hello"><span class="ab-wave" aria-hidden="true">👋</span><span class="ab-who"><b>Hi, I'm Ris Nguyen</b><small>Finance Student</small></span></figcaption>
     </figure>
     <div class="ab-text">
-      <div class="kicker eyebrow-sq" id="about-title">Who I am</div>
+      <div class="ab-title" id="about-title">Who I am</div>
       <h2 class="ab-head">I turn <span class="squig">market data</span> and <span class="squig">econometrics</span> into research for <span class="chip r">M&amp;A and consulting.</span></h2>
       <p class="ab-lede">My aim is to make finance clear enough to act on, for a client in a deal room and for a first-time investor on their phone.</p>
       <div class="ab-btns">
