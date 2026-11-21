@@ -1884,6 +1884,17 @@ var FD_DATA = {
             if (fdTotal) fdTotal.setAttribute('aria-live','off');
             grow = gsap.timeline({ delay:.2, onUpdate:paint, onComplete:settle })
               .to(fdBars, { scaleY:1, duration:.9, ease:'power3.out', stagger:.12 });
+            /* the dashed goal bar (M&A) blinks during the last second, ending as the count stops;
+               about 3 blinks a second, within the WCAG flash limit */
+            var goal = fdBars.filter(function(b){ return b.classList.contains('future'); });
+            if (goal.length){
+              var half = .17, blinks = 6;                 /* 6 halves = 3 dim/bright cycles, ends on the original look */
+              /* the total stops when the last counted bar settles: its tween ends at stagger*index + duration,
+                 and with power3.out its value rounds to the final number about 0.1s before that */
+              var lastCounted = counts.lastIndexOf(true), countStop = Math.max(0, .12 * lastCounted + .9 - .1);
+              grow.to(goal, { opacity:.25, borderColor:'#C6F36A', duration:half, ease:'sine.inOut', yoyo:true, repeat:blinks - 1 },
+                Math.max(0, countStop - half * blinks));
+            }
           }
         });
       }
