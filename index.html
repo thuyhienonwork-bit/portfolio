@@ -166,7 +166,7 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 @media (prefers-reduced-motion: reduce){.tape-track{animation:none}}
 
 /* ---------- About ---------- */
-.about{background:#fff;padding:96px 0 104px}
+.about{background:#fff;padding:96px 0 32px}
 .about .wrap{max-width:1280px}
 .about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(40px,6vw,88px);align-items:center}
 .ab-card{position:relative;margin:0;aspect-ratio:5/5.6;border-radius:28px;overflow:hidden;background:rgba(31,157,85,.05)}
@@ -193,6 +193,7 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .ab-lede{font-size:15px;color:var(--muted);max-width:calc(10.1 * clamp(30px,3.4vw,48px));margin:0;line-height:1.65;text-align:justify;text-align-last:left;hyphens:none}
 .ab-lede b{color:var(--bull-deep)}
 .ab-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ab-btns .ab-btn{flex:1 1 0;justify-content:center;white-space:nowrap} /* buttons fill the column so both edges meet the dashboard margins */
 .ab-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:99px;transition:transform .15s ease, background .2s ease, border-color .2s ease}
 .ab-btn.solid{background:var(--bull);color:#fff}
 .ab-btn.solid:hover{background:var(--bull-deep);transform:translateY(-2px)}
@@ -583,7 +584,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 .fdash{--bg-page:#0B0C0A;--bg-card-black:#000;--bg-card-filled:#141613;--bg-tile:#1A1D17;--bg-chip:#1E221B;--bg-chip-2:#161914;--fd-border:#22261F;--border-soft:#262A22;--line-green:rgba(198,243,106,.28);--accent:#C6F36A;--accent-dark-bg:#1F2A12;--accent-dark-border:#3A4A24;--fd-text:#F2F4EE;--text-muted:#A3AA9C;--text-dim:#8E9588;--text-soft:#C9CEC3;--bar-idle:#1C1F19;--fd-head:"Space Grotesk",var(--body);--fd-body:"Inter",var(--body);
   background:var(--bg-page);color:var(--fd-text);font-family:var(--fd-body);padding:clamp(40px,6vw,72px) 0}
 /* Same white background as the Who I am intro; only the greeting row sits on it, the cards stay dark */
-.fdash{background:#fff}
+.fdash{background:#fff;padding-top:32px}
 .fdash .fd-h1{color:var(--forest)}
 .fdash .fd-lead{color:var(--muted)}
 .fdash .fd-search{background:#f3f4f1;border-color:var(--rule);color:var(--muted)}
