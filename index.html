@@ -177,31 +177,27 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .ab-social svg{width:19px;height:19px;fill:currentColor}
 .ab-status{position:absolute;top:26px;right:22px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--forest);font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:99px;box-shadow:0 6px 16px -8px rgba(12,18,16,.4)}
 .ab-status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--bull)}
-.ab-hello{position:absolute;right:22px;bottom:22px;width:min(330px,calc(100% - 44px));display:grid;grid-template-columns:auto 1fr;gap:14px 14px;align-items:center;background:var(--ink);color:#fff;border-radius:18px;padding:18px 20px}
-.ab-mark{width:34px;height:34px}
-.ab-hello b{display:block;font-size:17px;font-weight:700}
-.ab-hello small{display:block;font-size:13px;color:#b9c6be;margin-top:2px}
-.ab-facts{grid-column:1 / -1;display:flex;gap:16px;padding-top:12px;border-top:1px solid #26302b;font-family:var(--mono);font-size:12px;color:#d7f2e2}
-.ab-facts span::before{content:"▲ ";color:#4fd18a}
-.ab-facts span:nth-child(2)::before{color:#ff6b6f}
+.ab-hello{position:absolute;right:18px;bottom:18px;display:flex;flex-direction:column;gap:2px;background:var(--ink);color:#fff;border-radius:14px;padding:12px 18px}
+.ab-hello b{font-size:15px;font-weight:700;white-space:nowrap}
+.ab-hello small{font-size:12.5px;color:#b9c6be}
 .eyebrow-sq{display:flex;align-items:center;gap:14px;color:var(--forest)}
 .eyebrow-sq::before{content:"";width:16px;height:16px;background:var(--bear)}
-.ab-head{font-family:var(--display);font-weight:850;font-stretch:92%;font-size:clamp(30px,3.4vw,48px);line-height:1.22;letter-spacing:-.03em;color:var(--forest);margin:24px 0 26px}
+.ab-head{font-family:var(--display);font-weight:850;font-stretch:92%;font-size:clamp(30px,3.4vw,48px);line-height:1.22;letter-spacing:-.03em;color:var(--forest);margin:24px 0 26px;max-width:10.15em;text-align:justify;text-align-last:justify;hyphens:none}
 .chip{display:inline-block;padding:.02em .28em .08em;line-height:1.05;border:3px solid var(--forest);position:relative}
 .chip.r{background:var(--bear);color:#fff;box-shadow:6px 6px 0 var(--bull-deep);transform:rotate(.6deg)}
 .squig{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='10' viewBox='0 0 22 10'%3E%3Cpath d='M0 5 Q5.5 0 11 5 T22 5' fill='none' stroke='%23e0393e' stroke-width='3'/%3E%3C/svg%3E") repeat-x 0 100%;background-size:18px 8px;padding-bottom:8px}
-.ab-lede{font-size:17px;color:var(--muted);max-width:52ch;margin:0 0 14px;line-height:1.65}
+.ab-lede{font-size:15px;color:var(--muted);max-width:52ch;margin:0;line-height:1.65}
 .ab-lede b{color:var(--bull-deep)}
 .ab-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.ab-btn{display:inline-flex;align-items:center;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:99px;transition:transform .15s ease, background .2s ease, border-color .2s ease}
+.ab-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:99px;transition:transform .15s ease, background .2s ease, border-color .2s ease}
 .ab-btn.solid{background:var(--bull);color:#fff}
 .ab-btn.solid:hover{background:var(--bull-deep);transform:translateY(-2px)}
 .ab-btn.line{border:1.5px solid var(--rule);color:var(--forest);background:#fff}
+.ab-btn svg{width:16px;height:16px;fill:currentColor}
 .ab-btn.line:hover{border-color:var(--forest);transform:translateY(-2px)}
 @media (prefers-reduced-motion: reduce){.ab-btn,.ab-social a{transition:none}.ab-btn:hover{transform:none}}
 @media (max-width:900px){.about-grid{grid-template-columns:1fr}.ab-card{max-width:520px;width:100%}}
-.ab-facts span{white-space:nowrap}
-@media (max-width:600px){.ab-hello{left:12px;right:12px;bottom:12px;width:auto;padding:12px 14px;gap:8px 12px;border-radius:14px}.ab-mark{width:26px;height:26px}.ab-hello b{font-size:15px}.ab-hello small{font-size:12px}.ab-facts{gap:12px;padding-top:8px;font-size:11px}.ab-card .portrait{object-position:50% 15%}}
+@media (max-width:600px){.ab-hello{right:12px;bottom:12px;padding:10px 14px}.ab-card .portrait{object-position:50% 15%}}
 @media (max-width:420px){.ab-status{top:74px;left:22px;right:auto}}
 
 /* ---------- Dossier ---------- */
@@ -672,20 +668,16 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         <a href="https://github.com/thuyhienonwork-bit" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
       </div>
       <span class="ab-status">Open to opportunities</span>
-      <figcaption class="ab-hello">
-        <svg class="ab-mark" viewBox="0 0 38 38" aria-hidden="true"><rect x="4" y="16" width="5" height="14" fill="#e0393e"/><line x1="6.5" y1="12" x2="6.5" y2="34" stroke="#e0393e" stroke-width="1.5"/><rect x="16" y="9" width="5" height="16" fill="#4fd18a"/><line x1="18.5" y1="4" x2="18.5" y2="29" stroke="#4fd18a" stroke-width="1.5"/><rect x="28" y="4" width="5" height="13" fill="#4fd18a"/><line x1="30.5" y1="1" x2="30.5" y2="21" stroke="#4fd18a" stroke-width="1.5"/></svg>
-        <span><b>Hi, I'm Ris Nguyen</b><small>Finance student · RMIT · VN ⇄ AU</small></span>
-        <span class="ab-facts"><span>5 High Distinctions</span><span>4 Scholarships</span></span>
-      </figcaption>
+      <figcaption class="ab-hello"><b>Hi, I'm Ris Nguyen</b><small>Finance Student</small></figcaption>
     </figure>
     <div class="ab-text">
       <div class="kicker eyebrow-sq" id="about-title">Who I am</div>
-      <h2 class="ab-head">I turn <span class="squig">market data</span> and <span class="squig">econometrics</span> into research for <span class="chip r">M&amp;A and consulting.</span></h2>
-      <p class="ab-lede">Final-year <b>Finance</b> student at RMIT. Started in Professional Communication, moved to Finance: kept the writing, added the numbers.</p>
+      <h2 class="ab-head">I turn <span class="squig">market data</span><br>and <span class="squig">econometrics</span><br>into research for<br><span class="chip r">M&amp;A and consulting.</span></h2>
       <p class="ab-lede">My aim: make finance clear enough to act on, for a client in a deal room and for a first-time investor on their phone.</p>
       <div class="ab-btns">
         <a class="ab-btn solid" href="#dossier">Read my research</a>
         <a class="ab-btn line" href="#contact">Get in touch</a>
+        <a class="ab-btn line" href="https://www.linkedin.com/in/thuyhienonwork/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>LinkedIn</a>
       </div>
     </div>
   </div>
