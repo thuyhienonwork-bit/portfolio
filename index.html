@@ -1809,7 +1809,7 @@ var FD_DATA = {
         .from('.hero .stat', { y:18, opacity:0, duration:.6, stagger:.08 }, .85);
 
       /* Every other block slides up and fades in as it reaches the viewport, a few at a time */
-      var sel = ['.fd-head','.fdash .fd-card','.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
+      var sel = ['.fd-head','.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
         '.studio-top > *','.series-label','.series','.episode > *','.post','.course .sec-head','.cg','.acts-sec .kicker','.acts-sec .sec-head','.act','.hof .kicker.top','.hof-top > *',
         '.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
       var items = gsap.utils.toArray(sel).filter(function(el, i, arr){
@@ -1820,6 +1820,30 @@ var FD_DATA = {
         start:'top 92%', once:true, interval:.1, batchMax:4,
         onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); }
       });
+
+      /* 'Hi, I'm Ris' dashboard: cards pop in one after another, their inner tiles follow,
+         and the Learning Curve bars grow up from the baseline when the chart comes into view */
+      var fdCards = gsap.utils.toArray('.fdash .fd-card');
+      if (fdCards.length){
+        gsap.set(fdCards, { opacity:0, y:40, scale:.9, transformOrigin:'50% 80%' });
+        ScrollTrigger.batch(fdCards, {
+          start:'top 90%', once:true, interval:.12, batchMax:6,
+          onEnter:function(batch){
+            gsap.to(batch, { opacity:1, y:0, scale:1, duration:.7, ease:'back.out(1.6)', stagger:.12, overwrite:true });
+            var inner = [];
+            batch.forEach(function(c){ inner = inner.concat(gsap.utils.toArray('.fd-tile, .fd-person, .fd-btn', c)); });
+            if (inner.length) gsap.fromTo(inner, { opacity:0, scale:.6 }, { opacity:1, scale:1, duration:.5, ease:'back.out(2)', stagger:.06, delay:.3, overwrite:true });
+          }
+        });
+      }
+      var fdPlot = document.getElementById('fd-plot');
+      if (fdPlot){
+        gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:0, transformOrigin:'50% 100%' });
+        ScrollTrigger.create({
+          trigger:fdPlot, start:'top 85%', once:true,
+          onEnter:function(){ gsap.to(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, duration:.9, ease:'power3.out', stagger:.12, delay:.2 }); }
+        });
+      }
 
       /* 'More from the desk' heading glides in from both sides */
       var dh = { trigger:'.desk-head', start:'top 85%', once:true };
