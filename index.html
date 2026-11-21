@@ -582,7 +582,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 /* ===== Finance dashboard (About as a fintech dashboard) ===== */
 .fdash{--bg-page:#0B0C0A;--bg-card-black:#000;--bg-card-filled:#141613;--bg-tile:#1A1D17;--bg-chip:#1E221B;--bg-chip-2:#161914;--fd-border:#22261F;--border-soft:#262A22;--line-green:rgba(198,243,106,.28);--accent:#C6F36A;--accent-dark-bg:#1F2A12;--accent-dark-border:#3A4A24;--fd-text:#F2F4EE;--text-muted:#A3AA9C;--text-dim:#8E9588;--text-soft:#C9CEC3;--bar-idle:#1C1F19;--fd-head:"Space Grotesk",var(--body);--fd-body:"Inter",var(--body);
   background:var(--bg-page);color:var(--fd-text);font-family:var(--fd-body);padding:clamp(40px,6vw,72px) 0}
-.fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;padding:0 calc(clamp(24px,6vw,96px) / var(--z));display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;padding:0 calc(clamp(24px,6vw,96px) / var(--z));display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
 .fdash *,.fdash *::before,.fdash *::after{box-sizing:border-box}
 .fdash h2,.fdash h3,.fdash p{margin:0}
 /* Shrink the whole dashboard evenly on wide screens so its edges line up with the About section and its inner proportions stay the same */
@@ -632,7 +632,9 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--bg-chip-2);color:var(--text-muted);font-size:12px;font-weight:600;white-space:nowrap}
 .fd-chip.g{background:var(--accent-dark-bg);color:var(--accent)}
 /* Learning curve */
-.fd-curve{padding:24px}
+.fd-curve{padding:24px;flex:1 1 auto;display:flex;flex-direction:column}
+.fd-curve .fd-chart{margin-top:auto}
+.fd-curve .fd-tabs{margin-bottom:12px}
 .fd-curve-title{font-size:18px;font-weight:500;color:var(--text-soft)}
 .fd-total{font-family:var(--fd-head);font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
 .fd-range{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--border-soft);color:var(--text-soft);font-size:13px;white-space:nowrap}
@@ -640,7 +642,7 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-tab{height:44px;padding:0 18px;border-radius:999px;background:#111310;color:var(--text-soft);border:1px solid var(--border-soft);font:500 14px var(--fd-body);cursor:pointer}
 .fd-tab[aria-selected="true"]{background:var(--accent-dark-bg);color:var(--accent);border-color:var(--accent-dark-border)}
 .fd-tab:focus-visible,.fd-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.fd-chart{position:relative;height:320px;margin-top:12px}
+.fd-chart{position:relative;height:320px;margin-top:12px;flex:none}
 .fd-tick{position:absolute;left:0;width:40px;transform:translateY(-50%);font-size:12px;color:var(--text-dim);line-height:1}
 .fd-grid{position:absolute;left:40px;right:0;border-top:1px dashed #22261F}
 .fd-grid.base{border-top:1px solid #2A2E26}
@@ -685,6 +687,10 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-wallet .fd-tiles{margin-top:0;padding-top:0}
 /* Side: offer CTA */
 .fd-offer{border-color:#2A3320;background:radial-gradient(90% 80% at 0% 0%,#3A5419 0%,#1A240E 40%,rgba(10,12,8,0) 80%),radial-gradient(70% 60% at 100% 100%,rgba(70,96,30,.45) 0%,rgba(10,12,8,0) 70%),#0A0C08}
+/* the last card in each column stretches so the chart and the offer card end on the same line */
+.fd-offer{flex:1 1 auto;display:flex;flex-direction:column}
+.fd-offer p{margin-bottom:20px}
+.fd-offer .fd-cta{margin-top:auto}
 .fd-eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
 .fd-offer-title{font-family:var(--fd-head);font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:8px !important}
 .fd-offer p{font-size:14px;color:#C2C8BA;line-height:1.55;margin-top:8px}
