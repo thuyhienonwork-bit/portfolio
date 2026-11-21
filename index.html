@@ -6,7 +6,7 @@
 <title>Ris Nguyen Research Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* Layout idea: a trading floor. Black terminal cover with live candles, a forest-green research dossier, a sage studio for videos. Bull green = up, bear red = attention. */
@@ -574,6 +574,126 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:56px;padding-top:24px;border-top:1px solid #26302b;font-size:13.5px}
 .foot-bottom .ok::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#4fd18a;margin-right:8px}
 @media (max-width:820px){.foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.foot > div:first-child{grid-column:1/-1}}
+/* ===== Finance dashboard (About as a fintech dashboard) ===== */
+.fdash{--bg-page:#0B0C0A;--bg-card-black:#000;--bg-card-filled:#141613;--bg-tile:#1A1D17;--bg-chip:#1E221B;--bg-chip-2:#161914;--fd-border:#22261F;--border-soft:#262A22;--line-green:rgba(198,243,106,.28);--accent:#C6F36A;--accent-dark-bg:#1F2A12;--accent-dark-border:#3A4A24;--fd-text:#F2F4EE;--text-muted:#A3AA9C;--text-dim:#8E9588;--text-soft:#C9CEC3;--bar-idle:#1C1F19;--fd-head:"Space Grotesk",var(--body);--fd-body:"Inter",var(--body);
+  background:var(--bg-page);color:var(--fd-text);font-family:var(--fd-body);padding:clamp(40px,6vw,72px) 0}
+.fd-wrap{max-width:1400px;margin:0 auto;padding:0 clamp(16px,2.4vw,28px);display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.fdash *,.fdash *::before,.fdash *::after{box-sizing:border-box}
+.fdash h2,.fdash h3,.fdash p{margin:0}
+.fd-main{flex:999 1 640px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.fd-side{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.fd-row{display:flex;align-items:center;gap:12px}
+.fd-top{align-items:flex-start;justify-content:space-between}
+.fd-muted{color:var(--text-muted)}
+.fd-small{font-size:13px;line-height:1.45;margin-top:4px}
+.fd-ico{width:20px;height:20px;flex-shrink:0}
+.fd-ico.sm{width:15px;height:15px}
+.fd-card{border-radius:22px;padding:22px 24px;border:1px solid var(--fd-border);min-width:0}
+.fd-filled{background:var(--bg-card-filled)}
+.fd-line{background:var(--bg-card-black);border-color:var(--line-green)}
+.fd-title{font-size:18px;font-weight:600}
+/* Header */
+.fd-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.fd-h1{font-family:var(--fd-head);font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.05;color:var(--fd-text)}
+.fd-lead{font-size:16px;margin-top:8px;line-height:1.5}
+.fd-search{display:flex;align-items:center;gap:10px;height:48px;min-width:240px;padding:0 18px;border-radius:999px;background:var(--bg-card-filled);border:1px solid var(--border-soft);color:var(--text-muted);cursor:text}
+.fd-search input{flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--fd-text);font:500 15px var(--fd-body);outline:none}
+.fd-search input::placeholder{color:var(--text-dim)}
+.fd-search:focus-within{border-color:var(--accent-dark-border)}
+/* About + skills row */
+.fd-row2{display:flex;flex-wrap:wrap;gap:20px}
+.fd-about{flex:1 1 300px;display:flex;flex-direction:column}
+.fd-skills{flex:2 1 460px;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fd-cvpill{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;background:var(--bg-chip);color:var(--fd-text);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;position:relative}
+.fd-cvpill::after{content:"";position:absolute;inset:-4px}
+.fd-cvpill:hover{background:#262b22}
+.fd-big-wrap{display:flex;align-items:flex-start;gap:6px;margin-top:22px}
+.fd-big{font-family:var(--fd-head);font-size:40px;font-weight:600;line-height:1;letter-spacing:-.03em}
+.fd-big-lab{font-size:13px;color:var(--text-muted);letter-spacing:.04em;margin-top:6px}
+.fd-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:auto;padding-top:18px}
+.fd-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:76px;padding:14px 6px;border-radius:16px;background:var(--bg-tile);border:1px solid var(--border-soft);color:var(--fd-text);font-size:13.5px;font-weight:500;text-decoration:none;text-align:center}
+.fd-tile .fd-ico{color:var(--accent)}
+a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);background:#20241c;outline:none}
+.fd-skill{padding:20px;min-height:133px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.fd-circle{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--bg-chip);color:var(--accent);flex-shrink:0}
+.fd-skill-name{font-size:16px;font-weight:500;flex:1;min-width:0}
+.fd-dots{color:var(--text-dim)}
+.fd-skill-foot{justify-content:space-between;flex-wrap:wrap;gap:8px}
+.fd-skill-val{font-family:var(--fd-head);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.fd-chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--bg-chip-2);color:var(--text-muted);font-size:12px;font-weight:600;white-space:nowrap}
+.fd-chip.g{background:var(--accent-dark-bg);color:var(--accent)}
+/* Learning curve */
+.fd-curve{padding:24px}
+.fd-curve-title{font-size:18px;font-weight:500;color:var(--text-soft)}
+.fd-total{font-family:var(--fd-head);font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
+.fd-range{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--border-soft);color:var(--text-soft);font-size:13px;white-space:nowrap}
+.fd-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.fd-tab{height:44px;padding:0 18px;border-radius:999px;background:#111310;color:var(--text-soft);border:1px solid var(--border-soft);font:500 14px var(--fd-body);cursor:pointer}
+.fd-tab[aria-selected="true"]{background:var(--accent-dark-bg);color:var(--accent);border-color:var(--accent-dark-border)}
+.fd-tab:focus-visible,.fd-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fd-chart{position:relative;height:320px;margin-top:12px}
+.fd-tick{position:absolute;left:0;width:40px;transform:translateY(-50%);font-size:12px;color:var(--text-dim);line-height:1}
+.fd-grid{position:absolute;left:40px;right:0;border-top:1px dashed #22261F}
+.fd-grid.base{border-top:1px solid #2A2E26}
+.fd-plot{position:absolute;left:40px;right:0;top:0;bottom:0;display:flex;gap:14px;padding:0 4px}
+.fd-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.fd-bar{position:relative;display:block;width:100%;max-width:72px;padding:0;border:0;border-radius:12px;background:var(--bar-idle);cursor:pointer;transition:height .3s ease,background-color .2s ease}
+.fd-bar::before{content:"";position:absolute;left:0;right:0;bottom:0;height:max(100%,44px)}
+.fd-bar:hover{background:#262a22}
+.fd-bar.on{background:linear-gradient(180deg,#C6F36A 0%,#C6F36A33 100%)}
+.fd-bar.future{background:transparent;border:1.5px dashed #4A5243}
+.fd-bar.future.on{background:transparent;border-color:var(--accent)}
+.fd-tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);background:#fff;color:#10130C;font:600 13px var(--fd-body);border-radius:10px;padding:7px 12px;white-space:nowrap;pointer-events:none;z-index:2}
+.fd-lab{height:34px;line-height:34px;width:100%;font-size:12px;color:var(--text-dim);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fd-lab.on{color:var(--fd-text)}
+.fd-col:first-child .fd-tip{left:0;transform:none}
+.fd-col:last-child .fd-tip{left:auto;right:0;transform:none}
+/* Side: recommended */
+.fd-people{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:14px}
+.fd-person{display:flex;align-items:center;gap:14px}
+.fd-avatar{width:52px;height:52px;flex-shrink:0}
+.fd-person b{display:block;font-size:14px;font-weight:600}
+.fd-person span{display:block;font-size:12px;color:var(--text-muted);margin-top:2px}
+/* Side: credit card panel */
+.fd-wallet{background:#000;border-color:#1A1A1A;padding:12px 12px 18px;display:flex;flex-direction:column;gap:14px}
+.fd-bank{aspect-ratio:1.586/1;width:100%;border-radius:18px;padding:18px 20px 16px;display:flex;flex-direction:column;justify-content:space-between;color:#F2F4EE;
+  background:radial-gradient(70% 55% at 0% 0%,#6E8F3A 0%,#3A5119 30%,rgba(20,28,10,0) 75%),radial-gradient(60% 50% at 100% 100%,rgba(96,128,44,.55) 0%,rgba(20,28,10,0) 70%),#050605;
+  border:1px solid rgba(198,243,106,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.fd-bank .fd-row{justify-content:space-between}
+.fd-emv{width:30px;height:24px}
+.fd-issuer{font:italic 800 14px var(--fd-body);letter-spacing:.04em}
+.fd-num{display:flex;gap:16px;font-size:17px;letter-spacing:.08em;margin-top:6px;font-weight:500;white-space:nowrap}
+.fd-bank-foot{align-items:flex-end}
+.fd-holder{font-size:14px;font-weight:500}
+.fd-meta{display:flex;gap:18px;font-size:13px}
+.fd-meta small{display:block;font-size:9px;color:#B9C0B1;letter-spacing:.02em}
+.fd-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fd-btn{display:flex;align-items:center;justify-content:center;height:48px;border-radius:999px;background:var(--bg-chip);color:var(--fd-text);border:1px solid transparent;font-size:14.5px;font-weight:600;text-decoration:none;white-space:nowrap}
+.fd-btn:hover{background:#262b22}
+.fd-btn.acc{background:var(--accent-dark-bg);border-color:var(--accent-dark-border);color:var(--accent)}
+.fd-btn.acc:hover{background:#26341a}
+.fd-ql{font-size:17px;font-weight:600;padding:0 6px;margin-top:4px}
+.fd-wallet .fd-tiles{margin-top:0;padding-top:0}
+/* Side: offer CTA */
+.fd-offer{border-color:#2A3320;background:radial-gradient(90% 80% at 0% 0%,#3A5419 0%,#1A240E 40%,rgba(10,12,8,0) 80%),radial-gradient(70% 60% at 100% 100%,rgba(70,96,30,.45) 0%,rgba(10,12,8,0) 70%),#0A0C08}
+.fd-eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
+.fd-offer-title{font-family:var(--fd-head);font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:8px !important}
+.fd-offer p{font-size:14px;color:#C2C8BA;line-height:1.55;margin-top:8px}
+.fd-cta{display:flex;align-items:center;justify-content:center;height:54px;margin-top:20px;border-radius:999px;background:var(--accent);color:#10130C;font-size:17px;font-weight:600;text-decoration:none}
+.fd-cta:hover{background:#d4f88a}
+.fd-cvpill:focus-visible,.fd-btn:focus-visible,.fd-cta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){
+  .fd-skills{grid-template-columns:minmax(0,1fr)}
+  .fd-search{min-width:0;width:100%}
+  .fd-h1{font-size:34px}
+  .fd-card{padding:20px}
+  .fd-plot{gap:8px;padding:0}
+  .fd-tip{font-size:12px;padding:6px 9px}
+  .fd-bank{padding:14px 16px 12px}
+  .fd-num{gap:10px;font-size:15px}
+}
+@media (max-width:380px){.fd-num{font-size:13px;gap:8px}.fd-meta{gap:12px}.fd-total,.fd-big{font-size:34px}}
+@media (prefers-reduced-motion: reduce){.fd-bar{transition:none}}
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
@@ -655,6 +775,166 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     <span><b>KOMBAT</b>RMIT trading <span class="up">▲ live</span></span>
   </div>
 </div>
+
+<!-- FINANCE DASHBOARD: "About" as a fintech dashboard. Edit text and numbers in FD_DATA below. -->
+<section class="fdash" id="dashboard" aria-labelledby="fd-title">
+  <div class="fd-wrap" id="fd-root"></div>
+  <noscript><div class="fd-wrap"><h2 class="fd-h1" id="fd-title">Hi, I'm Ris.</h2><p class="fd-muted">Finance student at RMIT, building toward M&amp;A and strategy consulting.</p></div></noscript>
+</section>
+<script>
+/* ===== FD_DATA: all dashboard content lives here ===== */
+var FD_DATA = {
+  header: { title: "Hi, I'm Ris.", sub: "Finance student at RMIT, building toward M&A and strategy consulting.", search: "Search projects" },
+  links: {
+    cv: "#",            /* TODO: path to CV file, e.g. "cv/Ris-Nguyen-CV.pdf" */
+    linkedin: "https://www.linkedin.com/in/thuyhienonwork/",  /* TODO: confirm LinkedIn URL */
+    email: "mailto:thuyhien.onwork@gmail.com",                 /* TODO: confirm email */
+    projects: "#dossier",  /* TODO: projects page, currently the Research section */
+    contact: "#contact"
+  },
+  about: {
+    title: "About me", sub: "Bachelor of Business (Finance) · RMIT",
+    big: "2027", bigLabel: "CLASS", line: "Finance major · Business & Technology minor",
+    tiles: [ { icon: "swap", label: "M&A" }, { icon: "briefcase", label: "Consulting" }, { icon: "book", label: "Research" } ]
+  },
+  skills: [
+    { icon: "bars",     name: "Financial Modelling", value: "DCF · Comps",      chip: "HD Corp. Finance", green: true },
+    { icon: "grid",     name: "Excel",               value: "Models & analysis", chip: "[add proof]",     green: false },
+    { icon: "db",       name: "SQL",                 value: "SQL Server",        chip: "Udemy · 30 hrs",  green: true },
+    { icon: "trend",    name: "R & Forecasting",     value: "ARIMA · ETS",       chip: "HD ECON1061",     green: true }
+  ],
+  learningRange: "2024 – 2027",
+  learning: {
+    finance: { tab: "Finance", sub: "Hours of learning in finance", defaultSelected: 3, bars: [
+      { label: "Valuation",    hours: 120, title: "Corporate finance and valuation" },
+      { label: "Technical",    hours: 45,  title: "Technical analysis" },
+      { label: "Equity",       hours: 110, title: "Equity portfolio construction" },
+      { label: "Fixed income", hours: 130, title: "Bonds and yield curves" },
+      { label: "Trading",      hours: 60,  title: "Live trading competition" },
+      { label: "M&A",          hours: 150, title: "M&A modelling, next up", future: true }
+    ]},
+    quant: { tab: "Quant", sub: "Hours of learning in quant methods", defaultSelected: 1, bars: [
+      { label: "Decisions",   hours: 120, title: "Business decision analysis" },
+      { label: "SQL",         hours: 30,  title: "The Complete SQL Bootcamp, Udemy (Feb 2026)" },
+      { label: "Regression",  hours: 110, title: "Regression and econometrics" },
+      { label: "Forecasting", hours: 140, title: "Time-series forecasting" },
+      { label: "Yield curve", hours: 55,  title: "Yield curve forecasting" }
+    ]},
+    research: { tab: "Research", sub: "Hours of learning in research", defaultSelected: 1, bars: [
+      { label: "Methods",  hours: 100, title: "Mixed-methods research design" },
+      { label: "Chapters", hours: 180, title: "Co-authored book chapters" },
+      { label: "Netflix",  hours: 60,  title: "Company analysis: Netflix" },
+      { label: "NVIDIA",   hours: 75,  title: "NVIDIA returns study" }
+    ]}
+  },
+  recommended: { title: "Recommended by", sub: "Lecturers who have vouched for my work", people: [
+    { avatar: "cat",  name: "Dr Hieu Thai",   role: "Lecturer · Business Decision Making" },
+    { avatar: "bear", name: "Rejoy Benjamin", role: "Lecturer · Forecasting (ECON1061)" }
+  ]},
+  card: { issuer: "RMIT", number: ["****", "****", "M&A", "IB"], name: "Ris Nguyen", valid: "06/27", major: "FIN" },
+  offer: { eyebrow: "OPEN TO OFFERS", title: "Internships 2027", text: "M&A, investment banking and strategy consulting, in Vietnam or Australia.", button: "Let's talk" }
+};
+
+(function(){
+  var D = FD_DATA, root = document.getElementById('fd-root');
+  if (!root) return;
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var P = {
+    swap: '<path d="M7 7h12l-3-3M17 17H5l3 3"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+    book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/>',
+    bars: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    grid: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16"/>',
+    db: '<ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/>',
+    trend: '<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
+    dots: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
+    down: '<path d="M12 4v12M6 11l6 6 6-6M5 20h14"/>',
+    linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
+  };
+  function ico(n, cls){ return '<svg class="' + (cls||'fd-ico') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + '</svg>'; }
+  var AV = {
+    cat: '<circle cx="26" cy="26" r="25" fill="#2B3A17" stroke="#C6F36A" stroke-width="2"/><path d="M13 22l2-12 8 7zM39 22l-2-12-8 7z" fill="#F5E6CF"/><path d="M15.5 18l1-5 3.5 3zM36.5 18l-1-5-3.5 3z" fill="#F4A9A8"/><ellipse cx="26" cy="29" rx="14" ry="12" fill="#F5E6CF"/><circle cx="20.5" cy="27" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="27" r="1.8" fill="#1a1a1a"/><path d="M24.6 30.5h2.8L26 32z" fill="#F4A9A8"/><path d="M23 33.5q1.5 1.6 3-0.2q1.5 1.8 3 0.2" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/><ellipse cx="17.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/><ellipse cx="34.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/>',
+    bear: '<circle cx="26" cy="26" r="25" fill="#1E221B" stroke="#3A4A24" stroke-width="2"/><circle cx="15" cy="15" r="5.5" fill="#C99A6B"/><circle cx="37" cy="15" r="5.5" fill="#C99A6B"/><circle cx="15" cy="15" r="3" fill="#E2BE96"/><circle cx="37" cy="15" r="3" fill="#E2BE96"/><circle cx="26" cy="28" r="14" fill="#C99A6B"/><ellipse cx="26" cy="33" rx="7" ry="5.5" fill="#EBD3B6"/><circle cx="20.5" cy="25.5" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="25.5" r="1.8" fill="#1a1a1a"/><ellipse cx="26" cy="31" rx="2.4" ry="1.7" fill="#111"/><path d="M26 32.6v2M23.8 35.4q2.2 1.4 4.4 0" fill="none" stroke="#111" stroke-width="1" stroke-linecap="round"/>'
+  };
+  var L = D.links;
+
+  var skills = D.skills.map(function(s){
+    return '<article class="fd-card fd-line fd-skill"><div class="fd-row"><span class="fd-circle">' + ico(s.icon) + '</span><h3 class="fd-skill-name">' + esc(s.name) + '</h3>' + ico('dots','fd-ico fd-dots') + '</div>' +
+      '<div class="fd-row fd-skill-foot"><span class="fd-skill-val">' + esc(s.value) + '</span><span class="fd-chip' + (s.green ? ' g' : '') + '">' + esc(s.chip) + '</span></div></article>';
+  }).join('');
+
+  var keys = Object.keys(D.learning);
+  var tabs = keys.map(function(k, i){ return '<button type="button" role="tab" class="fd-tab" id="fd-tab-' + k + '" data-k="' + k + '" aria-selected="' + (i===0) + '" aria-controls="fd-plot">' + esc(D.learning[k].tab) + '</button>'; }).join('');
+  var ticks = [200,150,100,50,0].map(function(v){ var y = 40 + (1 - v/200) * 246; return '<span class="fd-tick" style="top:' + y + 'px">' + v + '</span><i class="fd-grid' + (v===0?' base':'') + '" style="top:' + y + 'px"></i>'; }).join('');
+
+  var people = D.recommended.people.map(function(p){
+    return '<li class="fd-person"><svg class="fd-avatar" viewBox="0 0 52 52" role="img" aria-label="Cartoon ' + p.avatar + ' avatar for ' + esc(p.name) + '">' + AV[p.avatar] + '</svg><div><b>' + esc(p.name) + '</b><span>' + esc(p.role) + '</span></div></li>';
+  }).join('');
+
+  var C = D.card;
+  root.innerHTML =
+    '<div class="fd-main">' +
+      '<div class="fd-head"><div><h2 class="fd-h1" id="fd-title">' + esc(D.header.title) + '</h2><p class="fd-muted fd-lead">' + esc(D.header.sub) + '</p></div>' +
+        '<label class="fd-search">' + ico('search') + '<input type="search" placeholder="' + esc(D.header.search) + '" aria-label="' + esc(D.header.search) + '"></label></div>' +
+      '<div class="fd-row2">' +
+        '<article class="fd-card fd-filled fd-about"><div class="fd-row fd-top"><div><h3 class="fd-title">' + esc(D.about.title) + '</h3><p class="fd-muted fd-small">' + esc(D.about.sub) + '</p></div>' +
+          '<a class="fd-cvpill" href="' + L.cv + '">CV ' + ico('down','fd-ico sm') + '</a></div>' +
+          '<div class="fd-big-wrap"><span class="fd-big">' + esc(D.about.big) + '</span><span class="fd-big-lab">' + esc(D.about.bigLabel) + '</span></div>' +
+          '<p class="fd-muted fd-small">' + esc(D.about.line) + '</p>' +
+          '<div class="fd-tiles">' + D.about.tiles.map(function(t){ return '<div class="fd-tile">' + ico(t.icon) + '<span>' + esc(t.label) + '</span></div>'; }).join('') + '</div></article>' +
+        '<div class="fd-skills">' + skills + '</div>' +
+      '</div>' +
+      '<article class="fd-card fd-line fd-curve"><div class="fd-row fd-top"><div><h3 class="fd-curve-title">Learning Curve</h3><div class="fd-total" id="fd-total" aria-live="polite"></div><p class="fd-muted fd-small" id="fd-sub"></p></div><span class="fd-range">' + esc(D.learningRange) + '</span></div>' +
+        '<div class="fd-tabs" role="tablist" aria-label="Learning area">' + tabs + '</div>' +
+        '<div class="fd-chart">' + ticks + '<div class="fd-plot" id="fd-plot" role="tabpanel"></div></div></article>' +
+    '</div>' +
+    '<aside class="fd-side">' +
+      '<article class="fd-card fd-filled"><h3 class="fd-title">' + esc(D.recommended.title) + '</h3><p class="fd-muted fd-small">' + esc(D.recommended.sub) + '</p><ul class="fd-people">' + people + '</ul></article>' +
+      '<article class="fd-card fd-wallet">' +
+        '<div class="fd-bank" role="img" aria-label="Student card: ' + esc(C.name) + ', ' + esc(C.issuer) + ', ' + esc(C.number.slice(2).join(' and ')) + ', valid thru ' + C.valid + ', major ' + C.major + '">' +
+          '<div class="fd-row"><svg class="fd-emv" viewBox="0 0 30 24" fill="none" stroke="#D3E3B4" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="28" height="22" rx="4"/><path d="M1 8h8M1 16h8M21 8h8M21 16h8M9 1v22M21 1v22M9 12h12"/></svg><span class="fd-issuer">' + esc(C.issuer) + '</span></div>' +
+          '<div class="fd-num" aria-hidden="true">' + C.number.map(function(n){ return '<span>' + esc(n) + '</span>'; }).join('') + '</div>' +
+          '<div class="fd-row fd-bank-foot" aria-hidden="true"><span class="fd-holder">' + esc(C.name) + '</span><span class="fd-meta"><span><small>Valid Thru</small>' + C.valid + '</span><span><small>Major</small>' + C.major + '</span></span></div>' +
+        '</div>' +
+        '<div class="fd-btns"><a class="fd-btn" href="' + L.cv + '">Download CV</a><a class="fd-btn acc" href="' + L.contact + '">Contact</a></div>' +
+        '<h3 class="fd-ql">Quick links</h3>' +
+        '<div class="fd-tiles"><a class="fd-tile" href="' + L.linkedin + '">' + ico('linkedin') + '<span>LinkedIn</span></a><a class="fd-tile" href="' + L.email + '">' + ico('mail') + '<span>Email</span></a><a class="fd-tile" href="' + L.projects + '">' + ico('folder') + '<span>Projects</span></a></div>' +
+      '</article>' +
+      '<article class="fd-card fd-offer"><div class="fd-eyebrow">' + esc(D.offer.eyebrow) + '</div><h3 class="fd-offer-title">' + esc(D.offer.title) + '</h3><p>' + esc(D.offer.text) + '</p><a class="fd-cta" href="' + L.contact + '">' + esc(D.offer.button) + '</a></article>' +
+    '</aside>';
+
+  /* Learning Curve chart */
+  var plot = document.getElementById('fd-plot'), totalEl = document.getElementById('fd-total'), subEl = document.getElementById('fd-sub');
+  var sel = {}; keys.forEach(function(k){ sel[k] = D.learning[k].defaultSelected; });
+  var active = keys[0], PH = 246;
+  function draw(){
+    var g = D.learning[active];
+    var total = g.bars.reduce(function(a, b){ return a + (b.future ? 0 : b.hours); }, 0);
+    totalEl.textContent = total.toFixed(1) + ' hrs';
+    subEl.textContent = g.sub;
+    plot.setAttribute('aria-labelledby', 'fd-tab-' + active);
+    plot.innerHTML = g.bars.map(function(b, i){
+      var on = i === sel[active], h = Math.min(b.hours, 200) / 200 * PH;
+      return '<div class="fd-col"><button type="button" class="fd-bar' + (on ? ' on' : '') + (b.future ? ' future' : '') + '" data-i="' + i + '" aria-pressed="' + on + '" aria-label="' + esc(b.title) + ', ' + b.hours + ' hours" style="height:0">' +
+        (on ? '<span class="fd-tip">' + (b.future ? 'Goal · ' : '') + b.hours + ' hrs</span>' : '') + '</button><span class="fd-lab' + (on ? ' on' : '') + '">' + esc(b.label) + '</span></div>';
+    }).join('');
+    var btns = plot.querySelectorAll('.fd-bar');
+    void plot.offsetHeight;
+    btns.forEach(function(el, i){ el.style.height = (Math.min(g.bars[i].hours, 200) / 200 * PH) + 'px'; });
+  }
+  plot.addEventListener('click', function(e){ var b = e.target.closest('.fd-bar'); if (!b) return; sel[active] = +b.dataset.i; draw(); plot.querySelector('.fd-bar[data-i="' + b.dataset.i + '"]').focus(); });
+  var tabEls = root.querySelectorAll('.fd-tab');
+  function setTab(k, focus){ active = k; tabEls.forEach(function(t){ var on = t.dataset.k === k; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); }); draw(); }
+  tabEls.forEach(function(t, i){
+    t.addEventListener('click', function(){ setTab(t.dataset.k); });
+    t.addEventListener('keydown', function(e){ var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); setTab(keys[(i + d + keys.length) % keys.length], true); });
+  });
+  setTab(active);
+})();
+</script>
 
 <!-- ABOUT -->
 <section class="about" id="about" aria-labelledby="about-title">
@@ -1523,7 +1803,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
         .from('.hero .stat', { y:18, opacity:0, duration:.6, stagger:.08 }, .85);
 
       /* Every other block slides up and fades in as it reaches the viewport, a few at a time */
-      var sel = ['.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
+      var sel = ['.fd-head','.fdash .fd-card','.about-grid > *','.mission','.dossier .kicker','.dossier-head','.tabs','.panel','.desk .kicker','.desk-head','.more-row',
         '.studio-top > *','.series-label','.series','.episode > *','.post','.course .sec-head','.cg','.acts-sec .kicker','.acts-sec .sec-head','.act','.hof .kicker.top','.hof-top > *',
         '.spot-img','.spot-txt','.rec-label','.rec-row','.contact .wrap > *','.foot > *'].join(',');
       var items = gsap.utils.toArray(sel).filter(function(el, i, arr){
