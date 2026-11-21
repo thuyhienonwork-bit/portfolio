@@ -190,7 +190,7 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .chip{display:inline-block;padding:.04em .3em .1em;line-height:1.05;border:3px solid var(--forest);border-radius:10px;position:relative}
 .chip.r{background:var(--bear);color:#fff;box-shadow:6px 6px 0 var(--bull-deep);transform:rotate(.6deg)}
 .squig{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='10' viewBox='0 0 22 10'%3E%3Cpath d='M0 5 Q5.5 0 11 5 T22 5' fill='none' stroke='%23e0393e' stroke-width='3'/%3E%3C/svg%3E") repeat-x 0 100%;background-size:18px 8px;padding-bottom:8px}
-.ab-lede{font-size:15px;color:var(--muted);max-width:52ch;margin:0;line-height:1.65}
+.ab-lede{font-size:15px;color:var(--muted);max-width:calc(10.1 * clamp(30px,3.4vw,48px));margin:0;line-height:1.65;text-align:justify;text-align-last:left;hyphens:none}
 .ab-lede b{color:var(--bull-deep)}
 .ab-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .ab-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:99px;transition:transform .15s ease, background .2s ease, border-color .2s ease}
@@ -676,7 +676,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
     <div class="ab-text">
       <div class="kicker eyebrow-sq" id="about-title">Who I am</div>
       <h2 class="ab-head">I turn <span class="squig">market data</span> and <span class="squig">econometrics</span> into research for <span class="chip r">M&amp;A and consulting.</span></h2>
-      <p class="ab-lede">My aim: make finance clear enough to act on, for a client in a deal room and for a first-time investor on their phone.</p>
+      <p class="ab-lede">My aim is to make finance clear enough to act on, for a client in a deal room and for a first-time investor on their phone.</p>
       <div class="ab-btns">
         <a class="ab-btn solid" href="#dossier">Read my research</a>
         <a class="ab-btn line" href="#contact">Get in touch</a>
