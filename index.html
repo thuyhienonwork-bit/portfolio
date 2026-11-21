@@ -1854,34 +1854,36 @@ var FD_DATA = {
       }
       var fdPlot = document.getElementById('fd-plot'), fdTotal = document.getElementById('fd-total');
       if (fdPlot){
-        /* Hours count up from 0 (total and the selected bar's label); the real text stays in the page if GSAP never runs */
-        var counters = [];
-        [fdTotal, fdPlot.querySelector('.fd-tip')].forEach(function(el){
-          if (!el) return;
-          var m = el.textContent.match(/^(.*?)([\d.]+)(\s*hrs)$/);
-          if (!m) return;
-          var dec = (m[2].split('.')[1] || '').length, c = { el:el, pre:m[1], end:+m[2], post:m[3], dec:dec, v:0 };
-          el.textContent = c.pre + (0).toFixed(dec) + c.post;
-          counters.push(c);
-        });
-        var countTweens = [];
-        function stopCount(){ countTweens.forEach(function(t){ t.kill(); }); countTweens = []; if (fdTotal) fdTotal.setAttribute('aria-live','polite'); }
-        /* switching tab or bar redraws the chart with the real numbers, so stop counting then */
+        /* The hours are tied to the bars: at every frame the total is the sum of each bar's hours times how far
+           that bar has grown, and the selected bar's label follows its own bar. So the numbers start with the
+           first bar and stop exactly when the last bar stops. The real text stays in the page if GSAP never runs. */
+        var fdBars = gsap.utils.toArray(fdPlot.querySelectorAll('.fd-bar'));
+        var parse = function(el){ var m = el && el.textContent.match(/^(.*?)([\d.]+)(\s*hrs)$/); return m ? { el:el, pre:m[1], post:m[3], text:el.textContent, dec:(m[2].split('.')[1] || '').length } : null; };
+        var tot = parse(fdTotal), tip = parse(fdPlot.querySelector('.fd-tip'));
+        var hrs = fdBars.map(function(b){ var m = (b.getAttribute('aria-label') || '').match(/([\d.]+) hours/); return m ? +m[1] : 0; });
+        var counts = fdBars.map(function(b){ return !b.classList.contains('future'); });
+        var sel = fdBars.findIndex(function(b){ return b.classList.contains('on'); });
+        function paint(){
+          var sum = 0;
+          fdBars.forEach(function(b, i){ if (counts[i]) sum += hrs[i] * gsap.getProperty(b, 'scaleY'); });
+          if (tot) tot.el.textContent = tot.pre + sum.toFixed(tot.dec) + tot.post;
+          if (tip && sel > -1) tip.el.textContent = tip.pre + (hrs[sel] * gsap.getProperty(fdBars[sel], 'scaleY')).toFixed(tip.dec) + tip.post;
+        }
+        function settle(){ if (tot){ tot.el.textContent = tot.text; tot.el.setAttribute('aria-live','polite'); } if (tip) tip.el.textContent = tip.text; }
+        var grow = null;
+        /* switching tab or bar redraws the chart with the real numbers, so stop the count-up then */
+        function stopCount(){ if (grow){ grow.kill(); grow = null; } if (fdTotal) fdTotal.setAttribute('aria-live','polite'); }
         document.querySelectorAll('.fdash .fd-tab').forEach(function(t){ t.addEventListener('click', stopCount); });
         fdPlot.addEventListener('click', stopCount);
-        gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:0, transformOrigin:'50% 100%' });
+        gsap.set(fdBars, { scaleY:0, transformOrigin:'50% 100%' });
+        paint();
         ScrollTrigger.create({
           trigger:fdPlot, start:'top 85%', once:true,
           onEnter:function(){
-            gsap.to(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, duration:.9, ease:'power3.out', stagger:.12, delay:.2 });
+            if (!fdBars.length || !fdBars[0].isConnected) return;
             if (fdTotal) fdTotal.setAttribute('aria-live','off');
-            counters.forEach(function(c){
-              if (!c.el.isConnected) return;
-              countTweens.push(gsap.to(c, { v:c.end, duration:1.6, delay:.2, ease:'power2.out',
-                onUpdate:function(){ c.el.textContent = c.pre + c.v.toFixed(c.dec) + c.post; },
-                onComplete:function(){ c.el.textContent = c.pre + c.end.toFixed(c.dec) + c.post; if (c.el === fdTotal) fdTotal.setAttribute('aria-live','polite'); }
-              }));
-            });
+            grow = gsap.timeline({ delay:.2, onUpdate:paint, onComplete:settle })
+              .to(fdBars, { scaleY:1, duration:.9, ease:'power3.out', stagger:.12 });
           }
         });
       }
