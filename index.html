@@ -614,6 +614,15 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 .fdash .fd-offer{border-color:#d6dbd1;background:radial-gradient(90% 80% at 0% 0%,#dff0bd 0%,rgba(243,244,241,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(198,243,106,.35) 0%,rgba(243,244,241,0) 70%),#f3f4f1}
 .fdash .fd-offer p{color:#3d4b43}
 .fdash .fd-bank{color:#F2F4EE}
+/* Hi, I'm Ris: same green as the Who I am intro (--bull), replaces the lime accent */
+.fdash{--accent:var(--bull);--accent-dark-bg:var(--bull-soft);--accent-dark-border:#a9d9bb;--fd-acc-ink:var(--bull-deep)}
+.fdash .fd-btn.acc:hover{background:#c4e6d0}
+.fdash .fd-bar.on{background:linear-gradient(180deg,var(--bull) 0%,rgba(31,157,85,.25) 100%)}
+.fdash .fd-bar.future.on{border-color:var(--bull)}
+.fdash .fd-offer{background:radial-gradient(90% 80% at 0% 0%,var(--bull-soft) 0%,rgba(243,244,241,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(31,157,85,.16) 0%,rgba(243,244,241,0) 70%),#f3f4f1}
+.fdash .fd-cta{background:var(--bull);color:#fff}
+.fdash .fd-cta:hover{background:var(--bull-deep)}
+.fdash .fd-bank{border-color:rgba(31,157,85,.35);background:radial-gradient(70% 55% at 0% 0%,#2f8a55 0%,#14532f 30%,rgba(8,24,15,0) 75%),radial-gradient(60% 50% at 100% 100%,rgba(31,157,85,.45) 0%,rgba(8,24,15,0) 70%),#050605}
 .fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;padding:0 calc(clamp(24px,6vw,96px) / var(--z));display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
 .fdash *,.fdash *::before,.fdash *::after{box-sizing:border-box}
 .fdash h2,.fdash h3,.fdash p{margin:0}
@@ -937,7 +946,7 @@ var FD_DATA = {
   };
   function ico(n, cls){ return '<svg class="' + (cls||'fd-ico') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + '</svg>'; }
   var AV = {
-    cat: '<circle cx="26" cy="26" r="25" fill="#2B3A17" stroke="#C6F36A" stroke-width="2"/><path d="M13 22l2-12 8 7zM39 22l-2-12-8 7z" fill="#F5E6CF"/><path d="M15.5 18l1-5 3.5 3zM36.5 18l-1-5-3.5 3z" fill="#F4A9A8"/><ellipse cx="26" cy="29" rx="14" ry="12" fill="#F5E6CF"/><circle cx="20.5" cy="27" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="27" r="1.8" fill="#1a1a1a"/><path d="M24.6 30.5h2.8L26 32z" fill="#F4A9A8"/><path d="M23 33.5q1.5 1.6 3-0.2q1.5 1.8 3 0.2" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/><ellipse cx="17.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/><ellipse cx="34.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/>',
+    cat: '<circle cx="26" cy="26" r="25" fill="#0f241a" stroke="#1f9d55" stroke-width="2"/><path d="M13 22l2-12 8 7zM39 22l-2-12-8 7z" fill="#F5E6CF"/><path d="M15.5 18l1-5 3.5 3zM36.5 18l-1-5-3.5 3z" fill="#F4A9A8"/><ellipse cx="26" cy="29" rx="14" ry="12" fill="#F5E6CF"/><circle cx="20.5" cy="27" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="27" r="1.8" fill="#1a1a1a"/><path d="M24.6 30.5h2.8L26 32z" fill="#F4A9A8"/><path d="M23 33.5q1.5 1.6 3-0.2q1.5 1.8 3 0.2" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/><ellipse cx="17.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/><ellipse cx="34.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/>',
     bear: '<circle cx="26" cy="26" r="25" fill="#1E221B" stroke="#3A4A24" stroke-width="2"/><circle cx="15" cy="15" r="5.5" fill="#C99A6B"/><circle cx="37" cy="15" r="5.5" fill="#C99A6B"/><circle cx="15" cy="15" r="3" fill="#E2BE96"/><circle cx="37" cy="15" r="3" fill="#E2BE96"/><circle cx="26" cy="28" r="14" fill="#C99A6B"/><ellipse cx="26" cy="33" rx="7" ry="5.5" fill="#EBD3B6"/><circle cx="20.5" cy="25.5" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="25.5" r="1.8" fill="#1a1a1a"/><ellipse cx="26" cy="31" rx="2.4" ry="1.7" fill="#111"/><path d="M26 32.6v2M23.8 35.4q2.2 1.4 4.4 0" fill="none" stroke="#111" stroke-width="1" stroke-linecap="round"/>'
   };
   var L = D.links;
@@ -1924,7 +1933,7 @@ var FD_DATA = {
               /* the total stops when the last counted bar settles: its tween ends at stagger*index + duration,
                  and with power3.out its value rounds to the final number about 0.1s before that */
               var lastCounted = counts.lastIndexOf(true), countStop = Math.max(0, .12 * lastCounted + .9 - .1);
-              grow.to(goal, { opacity:.25, borderColor:'#C6F36A', duration:half, ease:'sine.inOut', yoyo:true, repeat:blinks - 1 },
+              grow.to(goal, { opacity:.25, borderColor:(getComputedStyle(fdPlot).getPropertyValue('--accent').trim() || '#1f9d55'), duration:half, ease:'sine.inOut', yoyo:true, repeat:blinks - 1 },
                 Math.max(0, countStop - half * blinks));
             }
           }
