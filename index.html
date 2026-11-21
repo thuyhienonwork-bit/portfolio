@@ -1836,12 +1836,37 @@ var FD_DATA = {
           }
         });
       }
-      var fdPlot = document.getElementById('fd-plot');
+      var fdPlot = document.getElementById('fd-plot'), fdTotal = document.getElementById('fd-total');
       if (fdPlot){
+        /* Hours count up from 0 (total and the selected bar's label); the real text stays in the page if GSAP never runs */
+        var counters = [];
+        [fdTotal, fdPlot.querySelector('.fd-tip')].forEach(function(el){
+          if (!el) return;
+          var m = el.textContent.match(/^(.*?)([\d.]+)(\s*hrs)$/);
+          if (!m) return;
+          var dec = (m[2].split('.')[1] || '').length, c = { el:el, pre:m[1], end:+m[2], post:m[3], dec:dec, v:0 };
+          el.textContent = c.pre + (0).toFixed(dec) + c.post;
+          counters.push(c);
+        });
+        var countTweens = [];
+        function stopCount(){ countTweens.forEach(function(t){ t.kill(); }); countTweens = []; if (fdTotal) fdTotal.setAttribute('aria-live','polite'); }
+        /* switching tab or bar redraws the chart with the real numbers, so stop counting then */
+        document.querySelectorAll('.fdash .fd-tab').forEach(function(t){ t.addEventListener('click', stopCount); });
+        fdPlot.addEventListener('click', stopCount);
         gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:0, transformOrigin:'50% 100%' });
         ScrollTrigger.create({
           trigger:fdPlot, start:'top 85%', once:true,
-          onEnter:function(){ gsap.to(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, duration:.9, ease:'power3.out', stagger:.12, delay:.2 }); }
+          onEnter:function(){
+            gsap.to(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, duration:.9, ease:'power3.out', stagger:.12, delay:.2 });
+            if (fdTotal) fdTotal.setAttribute('aria-live','off');
+            counters.forEach(function(c){
+              if (!c.el.isConnected) return;
+              countTweens.push(gsap.to(c, { v:c.end, duration:1.6, delay:.2, ease:'power2.out',
+                onUpdate:function(){ c.el.textContent = c.pre + c.v.toFixed(c.dec) + c.post; },
+                onComplete:function(){ c.el.textContent = c.pre + c.end.toFixed(c.dec) + c.post; if (c.el === fdTotal) fdTotal.setAttribute('aria-live','polite'); }
+              }));
+            });
+          }
         });
       }
 
