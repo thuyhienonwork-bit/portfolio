@@ -582,6 +582,14 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 /* ===== Finance dashboard (About as a fintech dashboard) ===== */
 .fdash{--bg-page:#0B0C0A;--bg-card-black:#000;--bg-card-filled:#141613;--bg-tile:#1A1D17;--bg-chip:#1E221B;--bg-chip-2:#161914;--fd-border:#22261F;--border-soft:#262A22;--line-green:rgba(198,243,106,.28);--accent:#C6F36A;--accent-dark-bg:#1F2A12;--accent-dark-border:#3A4A24;--fd-text:#F2F4EE;--text-muted:#A3AA9C;--text-dim:#8E9588;--text-soft:#C9CEC3;--bar-idle:#1C1F19;--fd-head:"Space Grotesk",var(--body);--fd-body:"Inter",var(--body);
   background:var(--bg-page);color:var(--fd-text);font-family:var(--fd-body);padding:clamp(40px,6vw,72px) 0}
+/* Same white background as the Who I am intro; only the greeting row sits on it, the cards stay dark */
+.fdash{background:#fff}
+.fdash .fd-h1{color:var(--forest)}
+.fdash .fd-lead{color:var(--muted)}
+.fdash .fd-search{background:#f3f4f1;border-color:var(--rule);color:var(--muted)}
+.fdash .fd-search input{color:var(--text)}
+.fdash .fd-search input::placeholder{color:#6b7870}
+.fdash .fd-search:focus-within{border-color:var(--forest)}
 .fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;padding:0 calc(clamp(24px,6vw,96px) / var(--z));display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
 .fdash *,.fdash *::before,.fdash *::after{box-sizing:border-box}
 .fdash h2,.fdash h3,.fdash p{margin:0}
