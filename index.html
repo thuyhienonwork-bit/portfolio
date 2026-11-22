@@ -624,15 +624,13 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 .fdash .fd-cta:hover{background:var(--bull-deep)}
 /* skill cards under the search: half the grey of the other panels (#f3f4f1 mixed 50/50 with white) */
 .fdash .fd-skill{background:#f9faf8}
-/* A soft frame around 'Hi, I'm Ris': rounded border and faint fill that fade in from the top,
-   so the section reads as one panel but still flows straight on from 'Who I am?' above */
+/* A full rounded frame around 'Hi, I'm Ris', sitting close to the boxes inside (about 14px gap) */
 .fdash .fd-wrap{position:relative;isolation:isolate}
 .fdash .fd-wrap::before{content:"";position:absolute;z-index:-1;pointer-events:none;
   --g:calc(clamp(24px,6vw,96px) / var(--z));
-  top:-30px;bottom:-30px;left:calc(var(--g) - min(28px, var(--g) * .6));right:calc(var(--g) - min(28px, var(--g) * .6));
-  border:1px solid #d3dacd;border-radius:36px;background:linear-gradient(180deg,#fff 0%,#f9faf7 100%);
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 160px);mask-image:linear-gradient(180deg,transparent 0,#000 160px)}
-@media (max-width:640px){.fdash .fd-wrap::before{border-radius:26px;top:-18px;bottom:-18px}}
+  top:-16px;bottom:-16px;left:calc(var(--g) - min(16px, var(--g) * .6));right:calc(var(--g) - min(16px, var(--g) * .6));
+  border:1px solid #d3dacd;border-radius:32px;background:linear-gradient(180deg,#fff 0%,#f9faf7 100%)}
+@media (max-width:640px){.fdash .fd-wrap::before{border-radius:26px;top:-12px;bottom:-12px}}
 /* every dashboard box at 60% of the Search projects grey (#f3f4f1 mixed 60/40 with white); the search box keeps the full grey */
 .fdash .fd-card,.fdash .fd-skill,.fdash .fd-wallet{background:#f8f8f7}
 .fdash .fd-offer{background:radial-gradient(90% 80% at 0% 0%,rgba(215,238,223,.6) 0%,rgba(248,248,247,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(31,157,85,.1) 0%,rgba(248,248,247,0) 70%),#f8f8f7}
