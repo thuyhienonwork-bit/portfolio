@@ -811,6 +811,9 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
   .tape-track,.ticker-track{animation:none !important}
   #hero-chart,#confetti{display:none}
 }
+/* Body text inside 'Hi, I'm Ris' matches the About intro ('My aim is...'): 15px on screen, same muted colour */
+.fdash .fd-small,.fdash .fd-offer p,.fdash .fd-person span:not(.fd-rec-go){font-size:calc(15px / var(--z));line-height:1.6;color:var(--muted)}
+.fdash .fd-person span:not(.fd-rec-go){font-size:calc(13px / var(--z));line-height:1.45} /* the role line under each lecturer's name stays a step smaller so it fits */
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
