@@ -761,6 +761,43 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 }
 @media (max-width:380px){.fd-num{font-size:13px;gap:8px}.fd-meta{gap:12px}.fd-total,.fd-big{font-size:34px}}
 @media (prefers-reduced-motion: reduce){.fd-bar{transition:none}}
+
+/* ---------- Audit fixes (Nov 2026) ---------- */
+/* 4. Contact links: two columns on phones so the arrows never touch the labels */
+@media (max-width:520px){
+  .socials{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .socials a,.socials a.wide{grid-column:auto;gap:8px}
+  .socials a:last-child:nth-child(odd){grid-column:1 / -1}
+}
+/* 5. Dossier on phones: left-aligned intro line; report tabs scroll sideways instead of stacking */
+@media (max-width:900px){.dossier-head p{text-align:left}}
+@media (max-width:720px){
+  .tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#2f4a3b transparent}
+  .tab,.tab:nth-child(2n){flex:0 0 auto;min-width:min(68%,240px);scroll-snap-align:start;border-right:1px solid #2f4a3b;border-bottom:4px solid transparent}
+  .tab[aria-selected="true"]{border-bottom-color:var(--bull)}
+}
+/* 7. Touch targets of at least 44px on phones */
+@media (max-width:600px){
+  .pill{position:relative}
+  .pill::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px}
+  header.top .brand{padding:7px;margin:-7px}
+  header.top .brand::after{inset:3px}
+  .hero .btn{min-height:44px}
+  .fd-tab,.fd-btn{min-height:44px}
+  .arrow-link,#celebrate,.under-cover a,.deeper .acts a,.pager button{min-height:44px;box-sizing:border-box}
+  .pager button,.under-cover a,.deeper .acts a{display:inline-flex;align-items:center}
+  .slide-nav button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+  #phone{display:flex;align-items:center;min-height:44px}
+  .foot ul{gap:0}
+  .foot a{display:inline-flex;align-items:center;min-height:44px}
+}
+/* 3. Printing shows every block in its final state, whatever the scroll animations were doing */
+@media print{
+  header.top{position:static}
+  .fdash .fd-card,.fdash .fd-card *,.fd-bar,[style*="opacity"]{opacity:1 !important;transform:none !important;visibility:visible !important}
+  .tape-track,.ticker-track{animation:none !important}
+  #hero-chart,#confetti{display:none}
+}
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
@@ -1674,6 +1711,7 @@ var FD_DATA = {
   function render(){
     var r = reports[cur];
     Array.prototype.forEach.call(tabsEl.children, function(el,i){ el.setAttribute('aria-selected', i===cur ? 'true':'false'); el.tabIndex = i===cur ? 0 : -1; });
+    if (tabsEl.scrollWidth > tabsEl.clientWidth){ var at = tabsEl.children[cur]; tabsEl.scrollTo({ left: Math.max(0, at.offsetLeft - tabsEl.offsetLeft - 16), behavior: reduce ? 'auto' : 'smooth' }); }
     document.getElementById('panel').setAttribute('aria-labelledby','tab-'+cur);
     document.getElementById('p-meta').innerHTML = r.meta[0]+'<i>/</i>'+r.meta[1]+'<i>/</i>'+r.meta[2];
     var t = document.getElementById('p-title'); t.innerHTML = '';
@@ -1877,7 +1915,9 @@ var FD_DATA = {
       gsap.set(items, { opacity:0, y:56 });
       ScrollTrigger.batch(items, {
         start:'top 92%', once:true, interval:.1, batchMax:4,
-        onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); }
+        onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); },
+        /* jumped straight past (anchor link, fast fling, Home/End): show it at once so nothing stays hidden */
+        onLeave:function(batch){ gsap.set(batch, { opacity:1, y:0, overwrite:true }); }
       });
 
       /* 'Hi, I'm Ris' dashboard: cards pop in one after another, their inner tiles follow,
@@ -1887,6 +1927,7 @@ var FD_DATA = {
         gsap.set(fdCards, { opacity:0, y:40, scale:.9, transformOrigin:'50% 80%' });
         ScrollTrigger.batch(fdCards, {
           start:'top 90%', once:true, interval:.12, batchMax:6,
+          onLeave:function(batch){ gsap.set(batch, { opacity:1, y:0, scale:1, overwrite:true }); batch.forEach(function(c){ gsap.set(gsap.utils.toArray('.fd-tile, .fd-person, .fd-btn', c), { opacity:1, scale:1, overwrite:true }); }); },
           onEnter:function(batch){
             gsap.to(batch, { opacity:1, y:0, scale:1, duration:.7, ease:'back.out(1.6)', stagger:.12, overwrite:true });
             var inner = [];
@@ -1941,6 +1982,15 @@ var FD_DATA = {
           }
         });
       }
+
+      /* Printing (Ctrl+P) or saving as PDF: finish every reveal first so no block prints blank */
+      var revealAll = function(){
+        gsap.set(items.concat(fdCards), { opacity:1, y:0, scale:1, overwrite:true });
+        gsap.set('.fdash .fd-tile, .fdash .fd-person, .fdash .fd-btn', { opacity:1, scale:1, overwrite:true });
+        if (fdPlot){ stopCount(); gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, opacity:1 }); settle(); }
+        gsap.set('.desk-head .gl-l, .desk-head .gl-r', { x:0 });
+      };
+      window.addEventListener('beforeprint', revealAll);
 
       /* 'More from the desk' heading glides in from both sides */
       var dh = { trigger:'.desk-head', start:'top 85%', once:true };
