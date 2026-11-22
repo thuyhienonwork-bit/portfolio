@@ -827,18 +827,18 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 @media (max-width:640px){.fdash .fd-head{padding-left:20px}}
 @media (min-width:1200px){.fd-about{flex:0 1 396px}}
 /* Type scale for 'Hi, I'm Ris' on desktop, in on-screen px (the dashboard is zoomed, so each size is divided by --z).
-   Steps: 32 display · 20 value · 18 title · 15 body · 14 label · 13 small · 12 meta */
+   Steps: 33 heading · 28 number · 18 value · 16 title · 14 body · 13 label · 12 small · 11 meta */
 @media (min-width:1200px){
-  .fdash .fd-h1{font-size:calc(34px / var(--z))}
-  .fdash .fd-big,.fdash .fd-total{font-size:calc(32px / var(--z))}
-  .fdash .fd-skill-val{font-size:calc(20px / var(--z))}
-  .fdash .fd-title,.fdash .fd-offer-title,.fdash .fd-curve-title{font-size:calc(18px / var(--z))}
-  .fdash .fd-ql{font-size:calc(16px / var(--z))}
-  .fdash .fd-cta{font-size:calc(15px / var(--z))}
-  .fdash .fd-skill-name,.fdash .fd-offer p,.fdash .fd-btn,.fdash .fd-tab,.fdash .fd-cvpill,.fdash .fd-tile,.fdash .fd-num{font-size:calc(14px / var(--z))}
-  .fdash .fd-person span:not(.fd-rec-go),.fdash .fd-holder,.fdash .fd-issuer,.fdash .fd-range,.fdash .fd-tip,.fdash .fd-meta,.fdash .fd-big-lab{font-size:calc(13px / var(--z))}
-  .fdash .fd-chip,.fdash .fd-tick,.fdash .fd-lab,.fdash .fd-eyebrow{font-size:calc(12px / var(--z))}
-  .fdash .fd-meta small{font-size:calc(10px / var(--z))}
+  .fdash .fd-h1{font-size:calc(33px / var(--z))}
+  .fdash .fd-big,.fdash .fd-total{font-size:calc(28px / var(--z))}
+  .fdash .fd-skill-val{font-size:calc(18px / var(--z))}
+  .fdash .fd-title,.fdash .fd-offer-title,.fdash .fd-curve-title{font-size:calc(16px / var(--z))}
+  .fdash .fd-ql,.fdash .fd-cta{font-size:calc(15px / var(--z))}
+  .fdash .fd-lead,.fdash .fd-small,.fdash .fd-person b{font-size:calc(14px / var(--z))}
+  .fdash .fd-skill-name,.fdash .fd-offer p,.fdash .fd-btn,.fdash .fd-tab,.fdash .fd-cvpill,.fdash .fd-tile,.fdash .fd-num{font-size:calc(13px / var(--z))}
+  .fdash .fd-person span:not(.fd-rec-go),.fdash .fd-holder,.fdash .fd-issuer,.fdash .fd-range,.fdash .fd-tip,.fdash .fd-meta,.fdash .fd-big-lab{font-size:calc(12px / var(--z))}
+  .fdash .fd-chip,.fdash .fd-tick,.fdash .fd-lab,.fdash .fd-eyebrow{font-size:calc(11px / var(--z))}
+  .fdash .fd-meta small{font-size:calc(9px / var(--z))}
   .fdash .fd-skill{padding:20px 16px}.fdash .fd-skill .fd-row{gap:10px}.fdash .fd-skill-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 }
 @media (min-width:1200px) and (max-width:1239px){.fdash .fd-skill-name{white-space:normal}} /* very narrow desktops: let a long skill name wrap rather than cut */
