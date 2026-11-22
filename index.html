@@ -956,7 +956,7 @@ var FD_DATA = {
   },
   skills: [
     { icon: "bars",     name: "Financial Modelling", value: "DCF · Comps",      chip: "HD Corp. Finance", green: true },
-    { icon: "grid",     name: "Excel",               value: "Models & analysis", chip: "[add proof]",     green: false },
+    { icon: "grid",     name: "Excel",               value: "Models & analysis", chip: "",                green: false },
     { icon: "db",       name: "SQL",                 value: "SQL Server",        chip: "Udemy · 30 hrs",  green: true },
     { icon: "trend",    name: "R & Forecasting",     value: "ARIMA · ETS",       chip: "HD ECON1061",     green: true }
   ],
@@ -1020,7 +1020,7 @@ var FD_DATA = {
 
   var skills = D.skills.map(function(s){
     return '<article class="fd-card fd-line fd-skill"><div class="fd-row"><span class="fd-circle">' + ico(s.icon) + '</span><h3 class="fd-skill-name">' + esc(s.name) + '</h3>' + ico('dots','fd-ico fd-dots') + '</div>' +
-      '<div class="fd-row fd-skill-foot"><span class="fd-skill-val">' + esc(s.value) + '</span><span class="fd-chip' + (s.green ? ' g' : '') + '">' + esc(s.chip) + '</span></div></article>';
+      '<div class="fd-row fd-skill-foot"><span class="fd-skill-val">' + esc(s.value) + '</span>' + (s.chip ? '<span class="fd-chip' + (s.green ? ' g' : '') + '">' + esc(s.chip) + '</span>' : '') + '</div></article>';
   }).join('');
 
   var keys = Object.keys(D.learning);
