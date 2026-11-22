@@ -842,6 +842,10 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
   .fdash .fd-skill{padding:20px 16px}.fdash .fd-skill .fd-row{gap:10px}.fdash .fd-skill-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 }
 @media (min-width:1200px) and (max-width:1239px){.fdash .fd-skill-name{white-space:normal}} /* very narrow desktops: let a long skill name wrap rather than cut */
+/* Research dossier to Hall of Fame share one content edge: 'More from the desk' and the Hall of Fame record list no longer break out wider */
+.desk .wrap{max-width:1120px;padding:0 clamp(24px,6vw,96px)}
+@media (max-width:600px){.desk .wrap{padding:0 20px}}
+.rec-label,#files{width:auto;margin-left:0;translate:none}
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
