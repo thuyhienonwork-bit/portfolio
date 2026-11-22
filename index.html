@@ -815,6 +815,16 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 /* Body text inside 'Hi, I'm Ris' matches the About intro ('My aim is...'): 15px on screen, same muted colour */
 .fdash .fd-small,.fdash .fd-offer p,.fdash .fd-person span:not(.fd-rec-go){font-size:calc(15px / var(--z));line-height:1.6;color:var(--muted)}
 .fdash .fd-person span:not(.fd-rec-go){font-size:calc(13px / var(--z));line-height:1.45} /* the role line under each lecturer's name stays a step smaller so it fits */
+/* 2026-11-22 balance pass */
+.fd-about .fd-row.fd-top{align-items:center}
+.fdash .fd-about-sub{margin-top:6px}
+.fdash .fd-offer p{font-size:calc(14px / var(--z))}
+.fdash .fd-person b{font-size:calc(15px / var(--z))}
+.fdash .fd-offer-title{font-family:var(--fd-body);font-size:18px;font-weight:600;letter-spacing:0}
+.fdash .fd-curve-title{font-size:18px;font-weight:600;color:var(--fd-text)}
+.fdash .fd-head{padding-left:24px}
+@media (max-width:640px){.fdash .fd-head{padding-left:20px}}
+@media (min-width:1200px){.fd-about{flex:0 1 420px}}
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
@@ -940,7 +950,7 @@ var FD_DATA = {
   },
   about: {
     title: "About me", sub: "Bachelor of Business (Finance) · RMIT",
-    big: "2027", bigLabel: "CLASS", line: "Finance major · Business & Technology minor",
+    big: "2027", bigLabel: "CLASS", line: "Finance major · Business & Tech minor",
     tiles: [ { icon: "swap", label: "M&A" }, { icon: "briefcase", label: "Consulting" }, { icon: "book", label: "Research" } ]
   },
   skills: [
@@ -1026,8 +1036,9 @@ var FD_DATA = {
       '<div class="fd-head"><div><h2 class="fd-h1" id="fd-title">' + esc(D.header.title) + '</h2><p class="fd-muted fd-lead">' + esc(D.header.sub) + '</p></div>' +
         '<label class="fd-search">' + ico('search') + '<input type="search" placeholder="' + esc(D.header.search) + '" aria-label="' + esc(D.header.search) + '"></label></div>' +
       '<div class="fd-row2">' +
-        '<article class="fd-card fd-filled fd-about"><div class="fd-row fd-top"><div><h3 class="fd-title">' + esc(D.about.title) + '</h3><p class="fd-muted fd-small">' + esc(D.about.sub) + '</p></div>' +
+        '<article class="fd-card fd-filled fd-about"><div class="fd-row fd-top"><div><h3 class="fd-title">' + esc(D.about.title) + '</h3></div>' +
           '<a class="fd-cvpill" href="' + L.cv + '">CV ' + ico('down','fd-ico sm') + '</a></div>' +
+          '<p class="fd-muted fd-small fd-about-sub">' + esc(D.about.sub) + '</p>' +
           '<div class="fd-big-wrap"><span class="fd-big">' + esc(D.about.big) + '</span><span class="fd-big-lab">' + esc(D.about.bigLabel) + '</span></div>' +
           '<p class="fd-muted fd-small">' + esc(D.about.line) + '</p>' +
           '<div class="fd-tiles">' + D.about.tiles.map(function(t){ return '<div class="fd-tile">' + ico(t.icon) + '<span>' + esc(t.label) + '</span></div>'; }).join('') + '</div></article>' +
