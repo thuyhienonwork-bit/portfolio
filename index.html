@@ -709,7 +709,9 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-person-link:hover,.fd-person-link:focus-visible{background:var(--bg-tile)}
 .fd-person-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fd-person-link > div{flex:1;min-width:0}
-.fd-rec-go{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent-dark-bg);border:1px solid var(--accent-dark-border);color:var(--accent);font-size:15px;opacity:0;transform:translate(-4px,4px);transition:opacity .2s ease,transform .2s ease}
+.fd-rec-go{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent-dark-bg);border:1px solid var(--accent-dark-border);color:#1d3a12;font-size:0;line-height:0;opacity:0;transform:translate(-4px,4px);transition:opacity .2s ease,transform .2s ease}
+.fd-person .fd-rec-go{display:grid;place-items:center;margin:0;padding:0} /* beat ".fd-person span" so the arrow sits dead centre */
+.fd-rec-go svg{display:block;width:16px;height:16px}
 .fd-person-link:hover .fd-rec-go,.fd-person-link:focus-visible .fd-rec-go{opacity:1;transform:none}
 @media (hover:none){.fd-rec-go{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.fd-person-link,.fd-rec-go{transition:none}}
@@ -1000,7 +1002,7 @@ var FD_DATA = {
   var ticks = [200,150,100,50,0].map(function(v){ var y = 40 + (1 - v/200) * 246; return '<span class="fd-tick" style="top:' + y + 'px">' + v + '</span><i class="fd-grid' + (v===0?' base':'') + '" style="top:' + y + 'px"></i>'; }).join('');
 
   var people = D.recommended.people.map(function(p){
-    return '<li class="fd-person"><a class="fd-person-link" href="' + D.links.recommendations + '" target="_blank" rel="noopener" title="Read ' + esc(p.name) + '\'s recommendation on LinkedIn"><svg class="fd-avatar" viewBox="0 0 52 52" role="img" aria-label="Cartoon ' + p.avatar + ' avatar for ' + esc(p.name) + '">' + AV[p.avatar] + '</svg><div><b>' + esc(p.name) + '</b><span>' + esc(p.role) + '</span></div><span class="fd-rec-go" aria-hidden="true">↗</span><span class="fd-sr"> (opens LinkedIn recommendations in a new tab)</span></a></li>';
+    return '<li class="fd-person"><a class="fd-person-link" href="' + D.links.recommendations + '" target="_blank" rel="noopener" title="Read ' + esc(p.name) + '\'s recommendation on LinkedIn"><svg class="fd-avatar" viewBox="0 0 52 52" role="img" aria-label="Cartoon ' + p.avatar + ' avatar for ' + esc(p.name) + '">' + AV[p.avatar] + '</svg><div><b>' + esc(p.name) + '</b><span>' + esc(p.role) + '</span></div><span class="fd-rec-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="fd-sr"> (opens LinkedIn recommendations in a new tab)</span></a></li>';
   }).join('');
 
   var C = D.card;
