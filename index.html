@@ -166,7 +166,7 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 @media (prefers-reduced-motion: reduce){.tape-track{animation:none}}
 
 /* ---------- About ---------- */
-.about{background:#fff;padding:96px 0 104px}
+.about{background:#fff;padding:96px 0 32px}
 .about .wrap{max-width:1280px}
 .about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(40px,6vw,88px);align-items:center}
 .ab-card{position:relative;margin:0;aspect-ratio:5/5.6;border-radius:28px;overflow:hidden;background:rgba(31,157,85,.05)}
@@ -186,6 +186,11 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .ab-hello small{font-size:12.5px;color:#b9c6be}
 .eyebrow-sq{display:flex;align-items:center;gap:14px;color:var(--forest)}
 .eyebrow-sq::before{content:"";width:16px;height:16px;background:var(--bear)}
+/* "Who I am" in the same style and on-screen size as the dashboard's "Hi, I'm Ris." */
+.ab-title{font-family:"Space Grotesk",var(--body);font-weight:600;font-size:40px;letter-spacing:-.03em;line-height:1.05;color:var(--forest)}
+@media (max-width:640px){.ab-title{font-size:34px}}
+@media (min-width:1200px){.ab-title{font-size:32px}}
+@media (min-width:1440px){.ab-title{font-size:33px}}
 .ab-head{font-family:var(--display);font-weight:850;font-stretch:92%;font-size:clamp(30px,3.4vw,48px);line-height:1.22;letter-spacing:-.03em;color:var(--forest);margin:24px 0 26px;}
 .chip{display:inline-block;padding:.04em .3em .1em;line-height:1.05;border:3px solid var(--forest);border-radius:10px;position:relative}
 .chip.r{background:var(--bear);color:#fff;transform:rotate(.6deg)}
@@ -193,6 +198,7 @@ button.pill{appearance:none;cursor:pointer;line-height:1}
 .ab-lede{font-size:15px;color:var(--muted);max-width:calc(10.1 * clamp(30px,3.4vw,48px));margin:0;line-height:1.65;text-align:justify;text-align-last:left;hyphens:none}
 .ab-lede b{color:var(--bull-deep)}
 .ab-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ab-btns .ab-btn{flex:1 1 0;justify-content:center;white-space:nowrap} /* buttons fill the column so both edges meet the dashboard margins */
 .ab-btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;padding:15px 28px;border-radius:99px;transition:transform .15s ease, background .2s ease, border-color .2s ease}
 .ab-btn.solid{background:var(--bull);color:#fff}
 .ab-btn.solid:hover{background:var(--bull-deep);transform:translateY(-2px)}
@@ -582,7 +588,55 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 /* ===== Finance dashboard (About as a fintech dashboard) ===== */
 .fdash{--bg-page:#0B0C0A;--bg-card-black:#000;--bg-card-filled:#141613;--bg-tile:#1A1D17;--bg-chip:#1E221B;--bg-chip-2:#161914;--fd-border:#22261F;--border-soft:#262A22;--line-green:rgba(198,243,106,.28);--accent:#C6F36A;--accent-dark-bg:#1F2A12;--accent-dark-border:#3A4A24;--fd-text:#F2F4EE;--text-muted:#A3AA9C;--text-dim:#8E9588;--text-soft:#C9CEC3;--bar-idle:#1C1F19;--fd-head:"Space Grotesk",var(--body);--fd-body:"Inter",var(--body);
   background:var(--bg-page);color:var(--fd-text);font-family:var(--fd-body);padding:clamp(40px,6vw,72px) 0}
-.fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;padding:0 calc(clamp(24px,6vw,96px) / var(--z));display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+/* Same white background as the Who I am intro; only the greeting row sits on it, the cards stay dark */
+.fdash{background:#fff;padding-top:32px}
+.fdash .fd-h1{color:var(--forest)}
+.fdash .fd-lead{color:var(--muted)}
+.fdash .fd-search{background:#f3f4f1;border-color:var(--rule);color:var(--muted)}
+.fdash .fd-search input{color:var(--text)}
+.fdash .fd-search input::placeholder{color:#6b7870}
+.fdash .fd-search:focus-within{border-color:var(--forest)}
+/* Light boxes: every dashboard panel uses the Search projects grey; the bank card stays dark */
+.fdash{--bg-card-black:#f3f4f1;--bg-card-filled:#f3f4f1;--bg-tile:#fff;--bg-chip:#e4e8df;--bg-chip-2:#e4e8df;--fd-border:#e1e5dd;--border-soft:#d6dbd1;--line-green:#d6dbd1;--accent-dark-bg:#e2f3c3;--accent-dark-border:#bcd98a;--fd-text:#132019;--text-muted:#56645b;--text-dim:#6b7870;--text-soft:#3d4b43;--bar-idle:#dfe3da;--fd-acc-ink:#3f6212}
+.fdash .fd-chip.g,.fdash .fd-tab[aria-selected="true"],.fdash .fd-btn.acc,.fdash .fd-circle,.fdash .fd-tile .fd-ico,.fdash .fd-eyebrow{color:var(--fd-acc-ink)}
+.fdash .fd-tab{background:#fff}
+.fdash .fd-cvpill:hover,.fdash .fd-btn:hover{background:#d9ded3}
+.fdash .fd-btn.acc:hover{background:#d4ecac}
+.fdash a.fd-tile:hover,.fdash a.fd-tile:focus-visible{background:#fbfcfa;border-color:var(--accent-dark-border)}
+.fdash .fd-grid{border-top-color:#d6dbd1}
+.fdash .fd-grid.base{border-top-color:#c3c9bd}
+.fdash .fd-bar:hover{background:#d3d8cd}
+.fdash .fd-bar.on{background:linear-gradient(180deg,#a8d94a 0%,#C6F36A66 100%)}
+.fdash .fd-bar.future{border-color:#9aa592}
+.fdash .fd-bar.future.on{border-color:#6f9a2a}
+.fdash .fd-tip{background:#132019;color:#fff}
+.fdash .fd-wallet{background:#f3f4f1;border-color:#e1e5dd}
+.fdash .fd-offer{border-color:#d6dbd1;background:radial-gradient(90% 80% at 0% 0%,#dff0bd 0%,rgba(243,244,241,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(198,243,106,.35) 0%,rgba(243,244,241,0) 70%),#f3f4f1}
+.fdash .fd-offer p{color:#3d4b43}
+.fdash .fd-bank{color:#F2F4EE}
+/* Hi, I'm Ris: same green as the Who I am intro (--bull), replaces the lime accent */
+.fdash{--accent:var(--bull);--accent-dark-bg:var(--bull-soft);--accent-dark-border:#a9d9bb;--fd-acc-ink:var(--bull-deep)}
+.fdash .fd-btn.acc:hover{background:#c4e6d0}
+.fdash .fd-bar.on{background:linear-gradient(180deg,var(--bull) 0%,rgba(31,157,85,.25) 100%)}
+.fdash .fd-bar.future.on{border-color:var(--bull)}
+.fdash .fd-offer{background:radial-gradient(90% 80% at 0% 0%,var(--bull-soft) 0%,rgba(243,244,241,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(31,157,85,.16) 0%,rgba(243,244,241,0) 70%),#f3f4f1}
+.fdash .fd-cta{background:var(--bull);color:#fff}
+.fdash .fd-cta:hover{background:var(--bull-deep)}
+/* skill cards under the search: half the grey of the other panels (#f3f4f1 mixed 50/50 with white) */
+.fdash .fd-skill{background:#f9faf8}
+/* A full rounded frame around 'Hi, I'm Ris', about 18px from the boxes inside */
+.fdash .fd-wrap{position:relative;isolation:isolate}
+.fdash .fd-wrap::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:-44px;bottom:-22px;left:var(--fx);right:var(--fx); /* sides reach a little past the Who I am? margins */
+  border:1px solid #cfe3d5;border-radius:32px;background:linear-gradient(180deg,#f7fcf8 0%,#f0f8f2 100%); /* very pale green */
+  /* top edge fades in so the frame flows on from 'Who I am?' */
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 160px);mask-image:linear-gradient(180deg,transparent 0,#000 160px)}
+@media (max-width:640px){.fdash .fd-wrap::before{border-radius:26px;top:-30px;bottom:-16px}}
+/* every dashboard box at 60% of the Search projects grey (#f3f4f1 mixed 60/40 with white); the search box keeps the full grey */
+.fdash .fd-card,.fdash .fd-skill,.fdash .fd-wallet{background:#f8f8f7}
+.fdash .fd-offer{background:radial-gradient(90% 80% at 0% 0%,rgba(215,238,223,.6) 0%,rgba(248,248,247,0) 70%),radial-gradient(70% 60% at 100% 100%,rgba(31,157,85,.1) 0%,rgba(248,248,247,0) 70%),#f8f8f7}
+.fdash .fd-bank{border-color:rgba(31,157,85,.35);background:radial-gradient(70% 55% at 0% 0%,#2f8a55 0%,#14532f 30%,rgba(8,24,15,0) 75%),radial-gradient(60% 50% at 100% 100%,rgba(31,157,85,.45) 0%,rgba(8,24,15,0) 70%),#050605}
+.fd-wrap{--z:1;zoom:var(--z);max-width:calc(1280px / var(--z));margin:0 auto;--g:calc(clamp(24px,6vw,96px) / var(--z));--fx:calc(var(--g) - min(88px, var(--g) * .8));padding:0 calc(var(--fx) + 22px);display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
 .fdash *,.fdash *::before,.fdash *::after{box-sizing:border-box}
 .fdash h2,.fdash h3,.fdash p{margin:0}
 /* Shrink the whole dashboard evenly on wide screens so its edges line up with the About section and its inner proportions stay the same */
@@ -591,6 +645,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 @media (max-width:600px){.fd-wrap{padding:0 20px}}
 .fd-main{flex:999 1 640px;min-width:0;display:flex;flex-direction:column;gap:20px}
 .fd-side{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px}
+@media (min-width:1200px){.fd-main{flex-basis:600px}.fd-side{flex-basis:440px}} /* wider side column so "Lecturers who have vouched for my work" sits on one line */
 .fd-row{display:flex;align-items:center;gap:12px}
 .fd-top{align-items:flex-start;justify-content:space-between}
 .fd-muted{color:var(--text-muted)}
@@ -604,7 +659,7 @@ footer{background:#141917;color:#a6b2ab;padding:64px 0 36px;font-size:15px}
 /* Header */
 .fd-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
 .fd-h1{font-family:var(--fd-head);font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.05;color:var(--fd-text)}
-.fd-lead{font-size:16px;margin-top:8px;line-height:1.5}
+.fd-lead{font-size:calc(15px / var(--z));margin-top:8px;line-height:1.5} /* shows at 15px like the About intro, whatever the dashboard zoom */
 .fd-search{display:flex;align-items:center;gap:10px;height:48px;min-width:240px;padding:0 18px;border-radius:999px;background:var(--bg-card-filled);border:1px solid var(--border-soft);color:var(--text-muted);cursor:text}
 .fd-search input{flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--fd-text);font:500 15px var(--fd-body);outline:none}
 .fd-search input::placeholder{color:var(--text-dim)}
@@ -632,7 +687,9 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;background:var(--bg-chip-2);color:var(--text-muted);font-size:12px;font-weight:600;white-space:nowrap}
 .fd-chip.g{background:var(--accent-dark-bg);color:var(--accent)}
 /* Learning curve */
-.fd-curve{padding:24px}
+.fd-curve{padding:24px;flex:1 1 auto;display:flex;flex-direction:column}
+.fd-curve .fd-chart{margin-top:auto}
+.fd-curve .fd-tabs{margin-bottom:12px}
 .fd-curve-title{font-size:18px;font-weight:500;color:var(--text-soft)}
 .fd-total{font-family:var(--fd-head);font-size:40px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-top:8px}
 .fd-range{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--border-soft);color:var(--text-soft);font-size:13px;white-space:nowrap}
@@ -640,7 +697,7 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-tab{height:44px;padding:0 18px;border-radius:999px;background:#111310;color:var(--text-soft);border:1px solid var(--border-soft);font:500 14px var(--fd-body);cursor:pointer}
 .fd-tab[aria-selected="true"]{background:var(--accent-dark-bg);color:var(--accent);border-color:var(--accent-dark-border)}
 .fd-tab:focus-visible,.fd-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.fd-chart{position:relative;height:320px;margin-top:12px}
+.fd-chart{position:relative;height:320px;margin-top:12px;flex:none}
 .fd-tick{position:absolute;left:0;width:40px;transform:translateY(-50%);font-size:12px;color:var(--text-dim);line-height:1}
 .fd-grid{position:absolute;left:40px;right:0;border-top:1px dashed #22261F}
 .fd-grid.base{border-top:1px solid #2A2E26}
@@ -659,7 +716,18 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-col:last-child .fd-tip{left:auto;right:0;transform:none}
 /* Side: recommended */
 .fd-people{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:14px}
-.fd-person{display:flex;align-items:center;gap:14px}
+.fd-person{display:block}
+.fd-person-link{display:flex;align-items:center;gap:14px;margin:-8px;padding:8px;border-radius:14px;color:inherit;text-decoration:none;transition:background .2s ease}
+.fd-person-link:hover,.fd-person-link:focus-visible{background:var(--bg-tile)}
+.fd-person-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fd-person-link > div{flex:1;min-width:0}
+.fd-rec-go{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent-dark-bg);border:1px solid var(--accent-dark-border);color:#1d3a12;font-size:0;line-height:0;opacity:0;transform:translate(-4px,4px);transition:opacity .2s ease,transform .2s ease}
+.fd-person .fd-rec-go{display:grid;place-items:center;margin:0;padding:0} /* beat ".fd-person span" so the arrow sits dead centre */
+.fd-rec-go svg{display:block;width:16px;height:16px}
+.fd-person-link:hover .fd-rec-go,.fd-person-link:focus-visible .fd-rec-go{opacity:1;transform:none}
+@media (hover:none){.fd-rec-go{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.fd-person-link,.fd-rec-go{transition:none}}
+.fd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .fd-avatar{width:52px;height:52px;flex-shrink:0}
 .fd-person b{display:block;font-size:14px;font-weight:600}
 .fd-person span{display:block;font-size:12px;color:var(--text-muted);margin-top:2px}
@@ -685,6 +753,10 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 .fd-wallet .fd-tiles{margin-top:0;padding-top:0}
 /* Side: offer CTA */
 .fd-offer{border-color:#2A3320;background:radial-gradient(90% 80% at 0% 0%,#3A5419 0%,#1A240E 40%,rgba(10,12,8,0) 80%),radial-gradient(70% 60% at 100% 100%,rgba(70,96,30,.45) 0%,rgba(10,12,8,0) 70%),#0A0C08}
+/* the last card in each column stretches so the chart and the offer card end on the same line */
+.fd-offer{flex:1 1 auto;display:flex;flex-direction:column}
+.fd-offer p{margin-bottom:20px}
+.fd-offer .fd-cta{margin-top:auto}
 .fd-eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
 .fd-offer-title{font-family:var(--fd-head);font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:8px !important}
 .fd-offer p{font-size:14px;color:#C2C8BA;line-height:1.55;margin-top:8px}
@@ -703,6 +775,77 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
 }
 @media (max-width:380px){.fd-num{font-size:13px;gap:8px}.fd-meta{gap:12px}.fd-total,.fd-big{font-size:34px}}
 @media (prefers-reduced-motion: reduce){.fd-bar{transition:none}}
+
+/* ---------- Audit fixes (Nov 2026) ---------- */
+/* 4. Contact links: two columns on phones so the arrows never touch the labels */
+@media (max-width:520px){
+  .socials{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .socials a,.socials a.wide{grid-column:auto;gap:8px}
+  .socials a:last-child:nth-child(odd){grid-column:1 / -1}
+}
+/* 5. Dossier on phones: left-aligned intro line; report tabs scroll sideways instead of stacking */
+@media (max-width:900px){.dossier-head p{text-align:left}}
+@media (max-width:720px){
+  .tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#2f4a3b transparent}
+  .tab,.tab:nth-child(2n){flex:0 0 auto;min-width:min(68%,240px);scroll-snap-align:start;border-right:1px solid #2f4a3b;border-bottom:4px solid transparent}
+  .tab[aria-selected="true"]{border-bottom-color:var(--bull)}
+}
+/* 7. Touch targets of at least 44px on phones */
+@media (max-width:600px){
+  .pill{position:relative}
+  .pill::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px}
+  header.top .brand{padding:7px;margin:-7px}
+  header.top .brand::after{inset:3px}
+  .hero .btn{min-height:44px}
+  .fd-tab,.fd-btn{min-height:44px}
+  .arrow-link,#celebrate,.under-cover a,.deeper .acts a,.pager button{min-height:44px;box-sizing:border-box}
+  .pager button,.under-cover a,.deeper .acts a{display:inline-flex;align-items:center}
+  .slide-nav button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+  #phone{display:flex;align-items:center;min-height:44px}
+  .foot ul{gap:0}
+  .foot a{display:inline-flex;align-items:center;min-height:44px}
+}
+/* 3. Printing shows every block in its final state, whatever the scroll animations were doing */
+@media print{
+  header.top{position:static}
+  .fdash .fd-card,.fdash .fd-card *,.fd-bar,[style*="opacity"]{opacity:1 !important;transform:none !important;visibility:visible !important}
+  .tape-track,.ticker-track{animation:none !important}
+  #hero-chart,#confetti{display:none}
+}
+/* Body text inside 'Hi, I'm Ris' matches the About intro ('My aim is...'): 15px on screen, same muted colour */
+.fdash .fd-small,.fdash .fd-offer p,.fdash .fd-person span:not(.fd-rec-go){font-size:calc(15px / var(--z));line-height:1.6;color:var(--muted)}
+.fdash .fd-person span:not(.fd-rec-go){font-size:calc(13px / var(--z));line-height:1.45} /* the role line under each lecturer's name stays a step smaller so it fits */
+/* 2026-11-22 balance pass */
+.fd-about .fd-row.fd-top{align-items:center}
+.fdash .fd-about-sub{margin-top:6px}
+.fdash .fd-offer p{font-size:calc(14px / var(--z))}
+.fdash .fd-person b{font-size:calc(15px / var(--z))}
+.fdash .fd-offer-title{font-family:var(--fd-body);font-size:18px;font-weight:600;letter-spacing:0}
+.fdash .fd-curve-title{font-size:18px;font-weight:600;color:var(--fd-text)}
+.fdash .fd-title,.fdash .fd-offer-title,.fdash .fd-curve-title{font-size:20px} /* card titles two sizes up, all matching 'Recommended by' */
+.fdash .fd-head{padding-left:24px}
+@media (max-width:640px){.fdash .fd-head{padding-left:20px}}
+@media (min-width:1200px){.fd-about{flex:0 1 396px}}
+/* Type scale for 'Hi, I'm Ris' on desktop, in on-screen px (the dashboard is zoomed, so each size is divided by --z).
+   Steps: 33 heading · 28 number · 18 value · 16 title · 14 body · 13 label · 12 small · 11 meta */
+@media (min-width:1200px){
+  .fdash .fd-h1{font-size:calc(33px / var(--z))}
+  .fdash .fd-big,.fdash .fd-total{font-size:calc(28px / var(--z))}
+  .fdash .fd-skill-val{font-size:calc(18px / var(--z))}
+  .fdash .fd-title,.fdash .fd-offer-title,.fdash .fd-curve-title{font-size:calc(16px / var(--z))}
+  .fdash .fd-ql,.fdash .fd-cta{font-size:calc(15px / var(--z))}
+  .fdash .fd-lead,.fdash .fd-small,.fdash .fd-person b{font-size:calc(14px / var(--z))}
+  .fdash .fd-skill-name,.fdash .fd-offer p,.fdash .fd-btn,.fdash .fd-tab,.fdash .fd-cvpill,.fdash .fd-tile,.fdash .fd-num{font-size:calc(13px / var(--z))}
+  .fdash .fd-person span:not(.fd-rec-go),.fdash .fd-holder,.fdash .fd-issuer,.fdash .fd-range,.fdash .fd-tip,.fdash .fd-meta,.fdash .fd-big-lab{font-size:calc(12px / var(--z))}
+  .fdash .fd-chip,.fdash .fd-tick,.fdash .fd-lab,.fdash .fd-eyebrow{font-size:calc(11px / var(--z))}
+  .fdash .fd-meta small{font-size:calc(9px / var(--z))}
+  .fdash .fd-skill{padding:20px 16px}.fdash .fd-skill .fd-row{gap:10px}.fdash .fd-skill-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media (min-width:1200px) and (max-width:1239px){.fdash .fd-skill-name{white-space:normal}} /* very narrow desktops: let a long skill name wrap rather than cut */
+/* Research dossier to Hall of Fame share one content edge: 'More from the desk' and the Hall of Fame record list no longer break out wider */
+.desk .wrap{max-width:1120px;padding:0 clamp(24px,6vw,96px)}
+@media (max-width:600px){.desk .wrap{padding:0 20px}}
+.rec-label,#files{width:auto;margin-left:0;translate:none}
 </style>
 <link rel="stylesheet" href="vendor/lenis.css">
 </head>
@@ -798,7 +941,7 @@ a.fd-tile:hover,a.fd-tile:focus-visible{border-color:var(--accent-dark-border);b
       <figcaption class="ab-hello"><span class="ab-wave" aria-hidden="true">👋</span><span class="ab-who"><b>Hi, I'm Ris Nguyen</b><small>Finance Student</small></span></figcaption>
     </figure>
     <div class="ab-text">
-      <div class="kicker eyebrow-sq" id="about-title">Who I am</div>
+      <div class="ab-title" id="about-title">Who I am?</div>
       <h2 class="ab-head">I turn <span class="squig">market data</span> and <span class="squig">econometrics</span> into research for <span class="chip r">M&amp;A and consulting.</span></h2>
       <p class="ab-lede">My aim is to make finance clear enough to act on, for a client in a deal room and for a first-time investor on their phone.</p>
       <div class="ab-btns">
@@ -821,18 +964,19 @@ var FD_DATA = {
   links: {
     cv: "#",            /* TODO: path to CV file, e.g. "cv/Ris-Nguyen-CV.pdf" */
     linkedin: "https://www.linkedin.com/in/thuyhienonwork/",  /* TODO: confirm LinkedIn URL */
+    recommendations: "https://www.linkedin.com/in/thuyhienonwork/details/recommendations/",  /* LinkedIn page listing the recommendations received */
     email: "mailto:thuyhien.onwork@gmail.com",                 /* TODO: confirm email */
     projects: "#dossier",  /* TODO: projects page, currently the Research section */
     contact: "#contact"
   },
   about: {
     title: "About me", sub: "Bachelor of Business (Finance) · RMIT",
-    big: "2027", bigLabel: "CLASS", line: "Finance major · Business & Technology minor",
+    big: "2027", bigLabel: "CLASS", line: "Finance major · Business & Tech minor",
     tiles: [ { icon: "swap", label: "M&A" }, { icon: "briefcase", label: "Consulting" }, { icon: "book", label: "Research" } ]
   },
   skills: [
     { icon: "bars",     name: "Financial Modelling", value: "DCF · Comps",      chip: "HD Corp. Finance", green: true },
-    { icon: "grid",     name: "Excel",               value: "Models & analysis", chip: "[add proof]",     green: false },
+    { icon: "grid",     name: "Excel",               value: "Models & analysis", chip: "",                green: false },
     { icon: "db",       name: "SQL",                 value: "SQL Server",        chip: "Udemy · 30 hrs",  green: true },
     { icon: "trend",    name: "R & Forecasting",     value: "ARIMA · ETS",       chip: "HD ECON1061",     green: true }
   ],
@@ -889,14 +1033,14 @@ var FD_DATA = {
   };
   function ico(n, cls){ return '<svg class="' + (cls||'fd-ico') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + P[n] + '</svg>'; }
   var AV = {
-    cat: '<circle cx="26" cy="26" r="25" fill="#2B3A17" stroke="#C6F36A" stroke-width="2"/><path d="M13 22l2-12 8 7zM39 22l-2-12-8 7z" fill="#F5E6CF"/><path d="M15.5 18l1-5 3.5 3zM36.5 18l-1-5-3.5 3z" fill="#F4A9A8"/><ellipse cx="26" cy="29" rx="14" ry="12" fill="#F5E6CF"/><circle cx="20.5" cy="27" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="27" r="1.8" fill="#1a1a1a"/><path d="M24.6 30.5h2.8L26 32z" fill="#F4A9A8"/><path d="M23 33.5q1.5 1.6 3-0.2q1.5 1.8 3 0.2" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/><ellipse cx="17.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/><ellipse cx="34.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/>',
+    cat: '<circle cx="26" cy="26" r="25" fill="#0f241a" stroke="#1f9d55" stroke-width="2"/><path d="M13 22l2-12 8 7zM39 22l-2-12-8 7z" fill="#F5E6CF"/><path d="M15.5 18l1-5 3.5 3zM36.5 18l-1-5-3.5 3z" fill="#F4A9A8"/><ellipse cx="26" cy="29" rx="14" ry="12" fill="#F5E6CF"/><circle cx="20.5" cy="27" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="27" r="1.8" fill="#1a1a1a"/><path d="M24.6 30.5h2.8L26 32z" fill="#F4A9A8"/><path d="M23 33.5q1.5 1.6 3-0.2q1.5 1.8 3 0.2" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round"/><ellipse cx="17.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/><ellipse cx="34.5" cy="32" rx="2.4" ry="1.4" fill="#F4A9A8" opacity=".7"/>',
     bear: '<circle cx="26" cy="26" r="25" fill="#1E221B" stroke="#3A4A24" stroke-width="2"/><circle cx="15" cy="15" r="5.5" fill="#C99A6B"/><circle cx="37" cy="15" r="5.5" fill="#C99A6B"/><circle cx="15" cy="15" r="3" fill="#E2BE96"/><circle cx="37" cy="15" r="3" fill="#E2BE96"/><circle cx="26" cy="28" r="14" fill="#C99A6B"/><ellipse cx="26" cy="33" rx="7" ry="5.5" fill="#EBD3B6"/><circle cx="20.5" cy="25.5" r="1.8" fill="#1a1a1a"/><circle cx="31.5" cy="25.5" r="1.8" fill="#1a1a1a"/><ellipse cx="26" cy="31" rx="2.4" ry="1.7" fill="#111"/><path d="M26 32.6v2M23.8 35.4q2.2 1.4 4.4 0" fill="none" stroke="#111" stroke-width="1" stroke-linecap="round"/>'
   };
   var L = D.links;
 
   var skills = D.skills.map(function(s){
     return '<article class="fd-card fd-line fd-skill"><div class="fd-row"><span class="fd-circle">' + ico(s.icon) + '</span><h3 class="fd-skill-name">' + esc(s.name) + '</h3>' + ico('dots','fd-ico fd-dots') + '</div>' +
-      '<div class="fd-row fd-skill-foot"><span class="fd-skill-val">' + esc(s.value) + '</span><span class="fd-chip' + (s.green ? ' g' : '') + '">' + esc(s.chip) + '</span></div></article>';
+      '<div class="fd-row fd-skill-foot"><span class="fd-skill-val">' + esc(s.value) + '</span>' + (s.chip ? '<span class="fd-chip' + (s.green ? ' g' : '') + '">' + esc(s.chip) + '</span>' : '') + '</div></article>';
   }).join('');
 
   var keys = Object.keys(D.learning);
@@ -904,7 +1048,7 @@ var FD_DATA = {
   var ticks = [200,150,100,50,0].map(function(v){ var y = 40 + (1 - v/200) * 246; return '<span class="fd-tick" style="top:' + y + 'px">' + v + '</span><i class="fd-grid' + (v===0?' base':'') + '" style="top:' + y + 'px"></i>'; }).join('');
 
   var people = D.recommended.people.map(function(p){
-    return '<li class="fd-person"><svg class="fd-avatar" viewBox="0 0 52 52" role="img" aria-label="Cartoon ' + p.avatar + ' avatar for ' + esc(p.name) + '">' + AV[p.avatar] + '</svg><div><b>' + esc(p.name) + '</b><span>' + esc(p.role) + '</span></div></li>';
+    return '<li class="fd-person"><a class="fd-person-link" href="' + D.links.recommendations + '" target="_blank" rel="noopener" title="Read ' + esc(p.name) + '\'s recommendation on LinkedIn"><svg class="fd-avatar" viewBox="0 0 52 52" role="img" aria-label="Cartoon ' + p.avatar + ' avatar for ' + esc(p.name) + '">' + AV[p.avatar] + '</svg><div><b>' + esc(p.name) + '</b><span>' + esc(p.role) + '</span></div><span class="fd-rec-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="fd-sr"> (opens LinkedIn recommendations in a new tab)</span></a></li>';
   }).join('');
 
   var C = D.card;
@@ -913,8 +1057,9 @@ var FD_DATA = {
       '<div class="fd-head"><div><h2 class="fd-h1" id="fd-title">' + esc(D.header.title) + '</h2><p class="fd-muted fd-lead">' + esc(D.header.sub) + '</p></div>' +
         '<label class="fd-search">' + ico('search') + '<input type="search" placeholder="' + esc(D.header.search) + '" aria-label="' + esc(D.header.search) + '"></label></div>' +
       '<div class="fd-row2">' +
-        '<article class="fd-card fd-filled fd-about"><div class="fd-row fd-top"><div><h3 class="fd-title">' + esc(D.about.title) + '</h3><p class="fd-muted fd-small">' + esc(D.about.sub) + '</p></div>' +
+        '<article class="fd-card fd-filled fd-about"><div class="fd-row fd-top"><div><h3 class="fd-title">' + esc(D.about.title) + '</h3></div>' +
           '<a class="fd-cvpill" href="' + L.cv + '">CV ' + ico('down','fd-ico sm') + '</a></div>' +
+          '<p class="fd-muted fd-small fd-about-sub">' + esc(D.about.sub) + '</p>' +
           '<div class="fd-big-wrap"><span class="fd-big">' + esc(D.about.big) + '</span><span class="fd-big-lab">' + esc(D.about.bigLabel) + '</span></div>' +
           '<p class="fd-muted fd-small">' + esc(D.about.line) + '</p>' +
           '<div class="fd-tiles">' + D.about.tiles.map(function(t){ return '<div class="fd-tile">' + ico(t.icon) + '<span>' + esc(t.label) + '</span></div>'; }).join('') + '</div></article>' +
@@ -1615,6 +1760,7 @@ var FD_DATA = {
   function render(){
     var r = reports[cur];
     Array.prototype.forEach.call(tabsEl.children, function(el,i){ el.setAttribute('aria-selected', i===cur ? 'true':'false'); el.tabIndex = i===cur ? 0 : -1; });
+    if (tabsEl.scrollWidth > tabsEl.clientWidth){ var at = tabsEl.children[cur]; tabsEl.scrollTo({ left: Math.max(0, at.offsetLeft - tabsEl.offsetLeft - 16), behavior: reduce ? 'auto' : 'smooth' }); }
     document.getElementById('panel').setAttribute('aria-labelledby','tab-'+cur);
     document.getElementById('p-meta').innerHTML = r.meta[0]+'<i>/</i>'+r.meta[1]+'<i>/</i>'+r.meta[2];
     var t = document.getElementById('p-title'); t.innerHTML = '';
@@ -1818,7 +1964,9 @@ var FD_DATA = {
       gsap.set(items, { opacity:0, y:56 });
       ScrollTrigger.batch(items, {
         start:'top 92%', once:true, interval:.1, batchMax:4,
-        onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); }
+        onEnter:function(batch){ gsap.to(batch, { opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.12, overwrite:true }); },
+        /* jumped straight past (anchor link, fast fling, Home/End): show it at once so nothing stays hidden */
+        onLeave:function(batch){ gsap.set(batch, { opacity:1, y:0, overwrite:true }); }
       });
 
       /* 'Hi, I'm Ris' dashboard: cards pop in one after another, their inner tiles follow,
@@ -1828,6 +1976,7 @@ var FD_DATA = {
         gsap.set(fdCards, { opacity:0, y:40, scale:.9, transformOrigin:'50% 80%' });
         ScrollTrigger.batch(fdCards, {
           start:'top 90%', once:true, interval:.12, batchMax:6,
+          onLeave:function(batch){ gsap.set(batch, { opacity:1, y:0, scale:1, overwrite:true }); batch.forEach(function(c){ gsap.set(gsap.utils.toArray('.fd-tile, .fd-person, .fd-btn', c), { opacity:1, scale:1, overwrite:true }); }); },
           onEnter:function(batch){
             gsap.to(batch, { opacity:1, y:0, scale:1, duration:.7, ease:'back.out(1.6)', stagger:.12, overwrite:true });
             var inner = [];
@@ -1838,37 +1987,59 @@ var FD_DATA = {
       }
       var fdPlot = document.getElementById('fd-plot'), fdTotal = document.getElementById('fd-total');
       if (fdPlot){
-        /* Hours count up from 0 (total and the selected bar's label); the real text stays in the page if GSAP never runs */
-        var counters = [];
-        [fdTotal, fdPlot.querySelector('.fd-tip')].forEach(function(el){
-          if (!el) return;
-          var m = el.textContent.match(/^(.*?)([\d.]+)(\s*hrs)$/);
-          if (!m) return;
-          var dec = (m[2].split('.')[1] || '').length, c = { el:el, pre:m[1], end:+m[2], post:m[3], dec:dec, v:0 };
-          el.textContent = c.pre + (0).toFixed(dec) + c.post;
-          counters.push(c);
-        });
-        var countTweens = [];
-        function stopCount(){ countTweens.forEach(function(t){ t.kill(); }); countTweens = []; if (fdTotal) fdTotal.setAttribute('aria-live','polite'); }
-        /* switching tab or bar redraws the chart with the real numbers, so stop counting then */
+        /* The hours are tied to the bars: at every frame the total is the sum of each bar's hours times how far
+           that bar has grown, and the selected bar's label follows its own bar. So the numbers start with the
+           first bar and stop exactly when the last bar stops. The real text stays in the page if GSAP never runs. */
+        var fdBars = gsap.utils.toArray(fdPlot.querySelectorAll('.fd-bar'));
+        var parse = function(el){ var m = el && el.textContent.match(/^(.*?)([\d.]+)(\s*hrs)$/); return m ? { el:el, pre:m[1], post:m[3], text:el.textContent, dec:(m[2].split('.')[1] || '').length } : null; };
+        var tot = parse(fdTotal), tip = parse(fdPlot.querySelector('.fd-tip'));
+        var hrs = fdBars.map(function(b){ var m = (b.getAttribute('aria-label') || '').match(/([\d.]+) hours/); return m ? +m[1] : 0; });
+        var counts = fdBars.map(function(b){ return !b.classList.contains('future'); });
+        var sel = fdBars.findIndex(function(b){ return b.classList.contains('on'); });
+        function paint(){
+          var sum = 0;
+          fdBars.forEach(function(b, i){ if (counts[i]) sum += hrs[i] * gsap.getProperty(b, 'scaleY'); });
+          if (tot) tot.el.textContent = tot.pre + sum.toFixed(tot.dec) + tot.post;
+          if (tip && sel > -1) tip.el.textContent = tip.pre + (hrs[sel] * gsap.getProperty(fdBars[sel], 'scaleY')).toFixed(tip.dec) + tip.post;
+        }
+        function settle(){ if (tot){ tot.el.textContent = tot.text; tot.el.setAttribute('aria-live','polite'); } if (tip) tip.el.textContent = tip.text; }
+        var grow = null;
+        /* switching tab or bar redraws the chart with the real numbers, so stop the count-up then */
+        function stopCount(){ if (grow){ grow.kill(); grow = null; } if (fdTotal) fdTotal.setAttribute('aria-live','polite'); }
         document.querySelectorAll('.fdash .fd-tab').forEach(function(t){ t.addEventListener('click', stopCount); });
         fdPlot.addEventListener('click', stopCount);
-        gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:0, transformOrigin:'50% 100%' });
+        gsap.set(fdBars, { scaleY:0, transformOrigin:'50% 100%' });
+        paint();
         ScrollTrigger.create({
           trigger:fdPlot, start:'top 85%', once:true,
           onEnter:function(){
-            gsap.to(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, duration:.9, ease:'power3.out', stagger:.12, delay:.2 });
+            if (!fdBars.length || !fdBars[0].isConnected) return;
             if (fdTotal) fdTotal.setAttribute('aria-live','off');
-            counters.forEach(function(c){
-              if (!c.el.isConnected) return;
-              countTweens.push(gsap.to(c, { v:c.end, duration:1.6, delay:.2, ease:'power2.out',
-                onUpdate:function(){ c.el.textContent = c.pre + c.v.toFixed(c.dec) + c.post; },
-                onComplete:function(){ c.el.textContent = c.pre + c.end.toFixed(c.dec) + c.post; if (c.el === fdTotal) fdTotal.setAttribute('aria-live','polite'); }
-              }));
-            });
+            grow = gsap.timeline({ delay:.2, onUpdate:paint, onComplete:settle })
+              .to(fdBars, { scaleY:1, duration:.9, ease:'power3.out', stagger:.12 });
+            /* the dashed goal bar (M&A) blinks during the last second, ending as the count stops;
+               about 3 blinks a second, within the WCAG flash limit */
+            var goal = fdBars.filter(function(b){ return b.classList.contains('future'); });
+            if (goal.length){
+              var half = .17, blinks = 6;                 /* 6 halves = 3 dim/bright cycles, ends on the original look */
+              /* the total stops when the last counted bar settles: its tween ends at stagger*index + duration,
+                 and with power3.out its value rounds to the final number about 0.1s before that */
+              var lastCounted = counts.lastIndexOf(true), countStop = Math.max(0, .12 * lastCounted + .9 - .1);
+              grow.to(goal, { opacity:.25, borderColor:(getComputedStyle(fdPlot).getPropertyValue('--accent').trim() || '#1f9d55'), duration:half, ease:'sine.inOut', yoyo:true, repeat:blinks - 1 },
+                Math.max(0, countStop - half * blinks));
+            }
           }
         });
       }
+
+      /* Printing (Ctrl+P) or saving as PDF: finish every reveal first so no block prints blank */
+      var revealAll = function(){
+        gsap.set(items.concat(fdCards), { opacity:1, y:0, scale:1, overwrite:true });
+        gsap.set('.fdash .fd-tile, .fdash .fd-person, .fdash .fd-btn', { opacity:1, scale:1, overwrite:true });
+        if (fdPlot){ stopCount(); gsap.set(fdPlot.querySelectorAll('.fd-bar'), { scaleY:1, opacity:1 }); settle(); }
+        gsap.set('.desk-head .gl-l, .desk-head .gl-r', { x:0 });
+      };
+      window.addEventListener('beforeprint', revealAll);
 
       /* 'More from the desk' heading glides in from both sides */
       var dh = { trigger:'.desk-head', start:'top 85%', once:true };
